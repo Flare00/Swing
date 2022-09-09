@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Local_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 59eecba430115f843aca9a8e71fd84b5, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 24695296000
+    m_Localized: Un Joueur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629778173952
+    m_Localized: Deux Joueur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 760095199232
+    m_Localized: Quitter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 815032193024
+    m_Localized: Instructions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1016551723008
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1087783587840
+    m_Localized: "Balles Lach\xE9es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1264451866624
+    m_Localized: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1371557613568
+    m_Localized: Niveau
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1623115190272
+    m_Localized: Musique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1635710685184
+    m_Localized: Effets Sonore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2286238846976
+    m_Localized: Synchronisation Verticale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2926876839936
+    m_Localized: "\xC9chelle de rendu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3118283902976
+    m_Localized: Confirmer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3260839907328
+    m_Localized: Annuler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3301080059904
+    m_Localized: Reprendre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3567690993664
+    m_Localized: Recommencer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3617137643520
+    m_Localized: Menu Principal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3737962958848
+    m_Localized: "Partie Termin\xE9e"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6327740157952
+    m_Localized: Joueur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6374137548800
+    m_Localized: "\xC9galit\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14537586921472
+    m_Localized: 'Score : '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14608441298944
+    m_Localized: 'Joueur 1 :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14704985788416
+    m_Localized: 'Joueur 2 :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17660208500736
+    m_Localized: Classement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17804794548224
+    m_Localized: Jouer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22263541026816
+    m_Localized: Gagne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28323068792832
+    m_Localized: Retour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343783571456
+    m_Localized: Rang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37414436622336
+    m_Localized: Nom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 332671464263680
+    m_Localized: Veuillez entrer votre nom
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

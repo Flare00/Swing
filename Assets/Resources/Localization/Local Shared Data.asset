@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Local Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Local
+  m_TableCollectionNameGuidString: 59eecba430115f843aca9a8e71fd84b5
+  m_Entries:
+  - m_Id: 24695296000
+    m_Key: solo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629778173952
+    m_Key: multi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 760095199232
+    m_Key: quitter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 815032193024
+    m_Key: instructions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1016551723008
+    m_Key: options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1087783587840
+    m_Key: ball_dropped
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1264451866624
+    m_Key: score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1371557613568
+    m_Key: niveau
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1623115190272
+    m_Key: music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1635710685184
+    m_Key: effet_sonore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2286238846976
+    m_Key: vsync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2926876839936
+    m_Key: echelle_rendu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3118283902976
+    m_Key: confirmer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3260839907328
+    m_Key: annuler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3301080059904
+    m_Key: reprendre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3567690993664
+    m_Key: recommencer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3617137643520
+    m_Key: menu_principal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3737962958848
+    m_Key: game_over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6327740157952
+    m_Key: joueur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6374137548800
+    m_Key: egalite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14537586921472
+    m_Key: score_dot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14608441298944
+    m_Key: joueur1_dot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14704985788416
+    m_Key: joueur2_dot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17660208500736
+    m_Key: leaderboard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17804794548224
+    m_Key: jouer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22263541026816
+    m_Key: gagne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28323068792832
+    m_Key: retour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343783571456
+    m_Key: rang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37414436622336
+    m_Key: nom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 332671464263680
+    m_Key: entrer_nom
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1650282562530

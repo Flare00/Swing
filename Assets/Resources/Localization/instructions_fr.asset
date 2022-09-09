@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: instructions_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 305dac154f9a38c4ba8ad8b67c136c8e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 174637469696
+    m_Localized: "R\xE8gle : Alignement"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 310193180672
+    m_Localized: "R\xE8gle : Empilement"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 441743331328
+    m_Localized: "R\xE8gle : Balancement"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 618810068992
+    m_Localized: "D\xE8s que 3 balles ou plus de m\xEAme couleur sont align\xE9es
+      horizontalement, ces 3 balles et toutes les balles adjacentes de m\xEAme couleur 
+      sont \xE9limin\xE9es."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 800545067008
+    m_Localized: "D\xE8s qu'un empliement de 5 balles ou plus de m\xEAme couleur
+      s'effectue, toutes ces balles fusionnent en une seule dont le poids est la
+      somme des poids des balles pr\xE9cedemment empil\xE9es."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 877925781504
+    m_Localized: "D\xE8s qu\u2019une balle d\xE9stabilise le poids d'une bascule,
+      la balle au sommet de la colonne la plus lourde, subit un d\xE9calage li\xE9
+      \xE0 la diff\xE9rence de poids dans la direction de la d\xE9stabilisation."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950545960960
+    m_Localized: Billes de Pouvoir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1206868267008
+    m_Localized: "La Bombe d\xE9truit tout dans un rayon de 3x3 \xE0 partir de son
+      centre. Les balles d\xE9truites donnent des points."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1318248009728
+    m_Localized: Le Joker peut remplacer n'importe quel couleur.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1355422126080
+    m_Localized: "Le Cutter d\xE9truit enti\xE8rement une colonne de balle."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1430084931584
+    m_Localized: "Le ZapHorizontal d\xE9truit une ligne enti\xE8re de balle \xE0
+      partir de son point d'impact. Les balles d\xE9truites donnent des points."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1615821295616
+    m_Localized: "Le ZapDiagonal rase toutes les balles en diagonale \xE0 partir
+      de son point d'impact. Les balles d\xE9truites donnent des points."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1768540098560
+    m_Localized: "Le CopyLine transforme toutes les balles de la colonne touch\xE9e
+      par la balle au sommet de cette colonne."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1806108479488
+    m_Localized: "Le CopySquare transforme toutes les balles dans un rayon de 3x3
+      par la balle touch\xE9e."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1833157545984
+    m_Localized: "Le CopyPrediction transforme toutes les balles de la derni\xE8re
+      ligne de la zone de pr\xE9diction par la balle touch\xE9e."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2472222674944
+    m_Localized: "Le DestroyTransform d\xE9truit toutes les balles de la couleur
+      touch\xE9e. Les balles d\xE9truites donnent des points."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2439410634752
+    m_Localized: "Le JokerTransform transforme toutes les balles de la couleur touch\xE9e
+      en Joker."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2412952965120
+    m_Localized: "Le BombTransform transforme toutes les balles de la couleur touch\xE9e
+      en Bomb."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2398679748608
+    m_Localized: "Le Sting d\xE9truit p\xE9riodiquement les balles au dessus et en
+      dessous de lui."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2385752903680
+    m_Localized: "Si 3 \xE9toiles sont align\xE9es, tout le tableau est d\xE9truit.
+      Une \xE9toile dor\xE9e peut \xEAtre form\xE9e en empilant 2 \xE9toiles.  Les
+      balles d\xE9truites donnent des points."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2357902725120
+    m_Localized: "Le FlashTriangle transforme toutes les balles dans un triangle
+      par la balle touch\xE9e."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2341863706624
+    m_Localized: "Le FlashDiagonal transforme toutes les balles en diagonale dans
+      un triangle par la balle touch\xE9e."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2312889454592
+    m_Localized: "Le Flash transforme al\xE9atoirement 2 balles par ligne dans un
+      triangle par la balle touch\xE9e."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3200748113920
+    m_Localized: Billes Malus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293874245632
+    m_Localized: La Brick est une balle inutile.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3361901662208
+    m_Localized: "Le BrickSquare \xE0 l'impact transforme toutes les balles dans
+      un rayon de 3x3 par des Bricks."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3434588950528
+    m_Localized: "Le BrickTransform transforme toutes les balles de la couleur touch\xE9e
+      en Brick."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3519351640064
+    m_Localized: La Tower remplit une colonne au plus au niveau possible avec des
+      Bricks.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

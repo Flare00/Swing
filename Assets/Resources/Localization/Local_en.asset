@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Local_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 59eecba430115f843aca9a8e71fd84b5, type: 2}
+  m_Metadata:
+    m_Items:
+    - id: 0
+  m_TableData:
+  - m_Id: 24695296000
+    m_Localized: Single Player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629778173952
+    m_Localized: Two Player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 760095199232
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1016551723008
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 815032193024
+    m_Localized: Rules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1087783587840
+    m_Localized: Ball Dropped
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1264451866624
+    m_Localized: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1371557613568
+    m_Localized: Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1623115190272
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1635710685184
+    m_Localized: Sound Effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2286238846976
+    m_Localized: Vertical Synchronization
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2926876839936
+    m_Localized: Render Scale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3118283902976
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3260839907328
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3301080059904
+    m_Localized: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3567690993664
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3617137643520
+    m_Localized: Main Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3737962958848
+    m_Localized: Game Over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6327740157952
+    m_Localized: Player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6374137548800
+    m_Localized: Tie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14537586921472
+    m_Localized: 'Score :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14608441298944
+    m_Localized: 'Player 1 :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14704985788416
+    m_Localized: 'Player 2 :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17660208500736
+    m_Localized: Leaderboard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17804794548224
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22263541026816
+    m_Localized: Win
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343783571456
+    m_Localized: Rank
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 28323068792832
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37414436622336
+    m_Localized: Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 332671464263680
+    m_Localized: Please enter your name
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1
+    00000000:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0050f4c6f6210000
