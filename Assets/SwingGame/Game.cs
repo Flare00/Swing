@@ -119,7 +119,6 @@ public class Game
             }
 
         }
-
     }
 
     public GameState State { get => _state; set => _state = value; }
