@@ -30,7 +30,7 @@ public class NormalBall : Ball
 
         if (idMaterial < 12)
         {
-            r.material = Resources.Load("Material/MaterialBaseColor/MaterialBall", typeof(Material)) as Material;
+            r.material = Resources.Load("Material/MaterialBaseColor/MaterialTriangle", typeof(Material)) as Material;
         }
         else if (idMaterial < 24)
         {
@@ -41,6 +41,21 @@ public class NormalBall : Ball
         {
             select -= 24;
             r.material = Resources.Load("Material/MaterialBaseColor/MaterialNoise", typeof(Material)) as Material;
+        }
+        else if (idMaterial < 48)
+        {
+            select -= 36;
+            r.material = Resources.Load("Material/MaterialBaseColor/MaterialStrip", typeof(Material)) as Material;
+        }
+        else if (idMaterial < 60)
+        {
+            select -= 48;
+            r.material = Resources.Load("Material/MaterialBaseColor/MaterialLosange", typeof(Material)) as Material;
+        }
+        else if (idMaterial < 72)
+        {
+            select -= 60;
+            r.material = Resources.Load("Material/MaterialBaseColor/MaterialTriangle", typeof(Material)) as Material;
         }
         else
         {
