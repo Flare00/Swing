@@ -109,6 +109,17 @@ public class GameState
         get => _countPowerUp;
         set => _countPowerUp = value;
     }
+
+    public int NbBallBeforeLevelUp
+    {
+        get => _nbBallBeforeLevelUp;
+    }
+
+      public float Time
+    {
+        get => _time;
+    }
+
     public bool GameOver { get => _gameOver; set => _gameOver = value; }
 
     public bool GameOverComputing
