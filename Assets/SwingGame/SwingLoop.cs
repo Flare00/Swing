@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class SwingLoop : MonoBehaviour
 {
+    public EventSystem mainEventSystem;
     public GameObject PreloadObjects;
     public PauseMenuScript pauseScript;
     public GameOverScript gameoverScript;
@@ -137,11 +138,14 @@ public class SwingLoop : MonoBehaviour
             if (pauseAsked)
             {
                 _isPause = true;
+                this.mainEventSystem.gameObject.SetActive(false);
+
                 pauseScript.Show();
                 for (int i = 0; i < _nbPlayer; i++)
                 {
                     _games[i].SetPause(true);
                 }
+
             }
 
             for (int i = 0; i < _nbPlayer && !_isPause; i++)
@@ -169,6 +173,7 @@ public class SwingLoop : MonoBehaviour
         pauseScript.Hide();
         _isPause = false;
         _waitForRelease = true;
+        this.mainEventSystem.gameObject.SetActive(true);
     }
 
 }

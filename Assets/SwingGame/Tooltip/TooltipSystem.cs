@@ -2,24 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TooltipSystem : MonoBehaviour
+public class TooltipSystem
 {
-    private static TooltipSystem _current;
-    public Tooltip tooltip;
 
-    public void Awake()
+
+    private static TooltipSystem INSTANCE;
+    private Tooltip tooltip;
+
+
+    public static TooltipSystem getInstance()
     {
-        _current = this;
+        if (INSTANCE is null)
+        {
+            INSTANCE = new TooltipSystem();
+        }
+
+        return INSTANCE;
     }
 
-    public static void Show(string content, string header = "")
+    public TooltipSystem()
     {
-        _current.tooltip.SetText(content, header);
-        _current.tooltip.gameObject.SetActive(true);
+        GameObject obj = GameObject.Instantiate(Resources.Load("Prefabs/TooltipCanvas", typeof(GameObject))) as GameObject;
+        
+        tooltip = obj.transform.GetChild(0).gameObject.GetComponent<Tooltip>();
     }
 
-    public static void Hide()
+    public void Show(string content, string header = "")
     {
-        _current.tooltip.gameObject.SetActive(false);
+        tooltip.SetText(content, header);
+        tooltip.gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        tooltip.gameObject.SetActive(false);
     }
 }

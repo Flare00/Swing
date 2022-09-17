@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Tooltip : MonoBehaviour
@@ -42,7 +43,7 @@ public class Tooltip : MonoBehaviour
             layoutElement.enabled = (headerLenght > characterWrapLimit || contentLength > characterWrapLimit) ? true : false;
         }
 
-        Vector2 position = Input.mousePosition;
+        Vector2 position = Mouse.current.position.ReadValue();
 
         float pivotX = position.x / Screen.width;
         float pivotY = position.y / Screen.height;

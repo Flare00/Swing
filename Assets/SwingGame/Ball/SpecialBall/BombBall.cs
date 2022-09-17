@@ -6,11 +6,12 @@ public class BombBall : SpecialBall
     public BombBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Bomb", typeof(GameObject))) as GameObject;
-        TooltipTrigger tooltip = this.BallObject.AddComponent<TooltipTrigger>();
-        tooltip.header = "header";
-        tooltip.content = "content";
+
+        this.setTooltip("oui", "non");
+
         _exploded = false;
     }
+
 
     public override void Action(GameZone zone, int x, int y)
     {

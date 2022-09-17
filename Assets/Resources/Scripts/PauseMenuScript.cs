@@ -91,6 +91,7 @@ public class PauseMenuScript : MonoBehaviour, ISettingsCallBack
         _isPause = false;
         eventSystem.gameObject.SetActive(false);
 
+
     }
 
     public void ResumeAction()
