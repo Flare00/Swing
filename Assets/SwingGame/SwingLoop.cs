@@ -95,6 +95,9 @@ public class SwingLoop : MonoBehaviour
         if (_isGameOverAsked && !_calledOnce)
         {
             _calledOnce = true;
+
+            this.mainEventSystem.gameObject.SetActive(false);
+
             pauseScript.Hide();
             if (_nbPlayer == 1)
             {

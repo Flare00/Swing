@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameState
 {
-    private static ulong SCORE_BALL = 50 ;
+    private static ulong SCORE_BALL = 50;
     public static int MULTIPLICATOR_MAX = 4;
     public static int MULTIPLICATOR_MIN = 1;
     private static float TIME_MAX = 5.0f;
@@ -13,6 +13,9 @@ public class GameState
     private static int INIT_LEVEL = 3;
     private static int INIT_MULTIPLICATOR = 1;
     private static float TIMING_BETWEEN_GAMEOVER_ROWS = 0.1f;
+
+    private static int ULONG_SIZE_MINUS_ONE = (sizeof(ulong) * 8) - 1;
+
     private float _gameDuration;
     private int _level;
     private ulong _score;
@@ -49,7 +52,13 @@ public class GameState
     public bool Multiplayer { get => _multiplayer; set => _multiplayer = value; }
     public int PlayerNumber { get => _playerNumber; set => _playerNumber = value; }
     public int Level { get => _level; }
-    public ulong Score { get => _score; }
+    public ulong Score
+    {
+        get
+        {
+            return swapBits(_score, true);
+        }
+    }
     public int Multiplicator { get => _multiplicator; }
     public float GameDuration { get => _gameDuration; set => _gameDuration = value; }
 
@@ -65,7 +74,7 @@ public class GameState
         _timingGameOver -= deltaT;
         if (_timingGameOver <= 0)
         {
-            if(_gameOverRow <= (GameZone.HeightPlayGround + 1)/2.0f) _gameOver = true;
+            if (_gameOverRow <= (GameZone.HeightPlayGround + 1) / 2.0f) _gameOver = true;
             if (_gameOverRow == 0)
             {
                 _gameOverComputing = false;
@@ -136,8 +145,29 @@ public class GameState
     {
         if (!_gameOverComputing)
         {
-            _score = _score + (SCORE_BALL * (ulong)(totalWeight * _multiplicator));
+            ulong computedScore = (SCORE_BALL * (ulong)(totalWeight * _multiplicator));
+            _score = swapBits(swapBits(_score, true) + computedScore);
         }
+    }
+
+    private ulong swapBits(ulong info, bool inverse = false)
+    {
+        ulong res = 0;
+        if (inverse)
+        {
+            res = (info >> 1) + (((info & 1ul) == 0 ? 0ul : 1ul) << ULONG_SIZE_MINUS_ONE);
+        }
+        else
+        {
+            res = (info << 1) + ((info & (1ul << ULONG_SIZE_MINUS_ONE)) == 0 ? 0ul : 1ul);
+        }
+        return res;
+    }
+
+    private void addScore(ulong scoreComputed)
+    {
+
+        
     }
 
 
