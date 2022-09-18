@@ -17,7 +17,7 @@ public class GameZone
     public const float SizeBall = 1.0f;
     public const float SpacingPredictionPlayer = 0.1f;
     public const float SpacingPlayerPlayground = 0.1f;
-    public const float SpacingFlyingBallPlayground = SpacingPlayerPlayground-SizeBall/2;
+    public const float SpacingFlyingBallPlayground = SpacingPlayerPlayground - SizeBall / 2;
     public const float DistanceExitFlying = 3f * SpacingBall;
 
     private struct MultiplicatorLightPlayground
@@ -47,6 +47,7 @@ public class GameZone
 
     private MultiplicatorLightPlayground _multiplicatorLightPlayground;
 
+    public GameObject ZoneGlobal {get => _zoneGlobal;}
 
     public GameZone(GameState gs)
     {
@@ -128,6 +129,8 @@ public class GameZone
 
         //Init Animator
         _animator = new SwingAnimator(this, _swings);
+        if (_gameState.Multiplayer && MultiplayerSystem.getInstance() != null)
+            MultiplayerSystem.getInstance().SubscribePlayer(_animator);
 
         _zonePrediction.transform.Translate(0.5f, -HeightPrediction, 0);
         _zonePlayer.transform.Translate(0.5f, -HeightPrediction - SizeBall - SpacingPredictionPlayer, 0);

@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using SwingGame.Media;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
-public class SwingAnimator : Animator
+public class SwingAnimator : Animator, IMultiplayerInterface
 {
     //speed
     public const float VerticalSpeed = 25.0f;
@@ -15,7 +17,7 @@ public class SwingAnimator : Animator
         Vertical,
         Horizontal
     }
-    
+
     public enum Direction
     {
         DirectionRight,
@@ -23,7 +25,7 @@ public class SwingAnimator : Animator
         DirectionUp,
         DirectionDown
     }
-    
+
     public enum StateAnim
     {
         StateUpDeplBall,
@@ -70,8 +72,7 @@ public class SwingAnimator : Animator
 
     public void AddFlyingBall(Ball b, float nbUp, float nbSide, Vector2 position, SwingAnimator.Direction dirHorizontal)
     {
-        _floatingBallsContainers.Add(
-            new FloatingBallContainer(ball: b,
+        _floatingBallsContainers.Add(new FloatingBallContainer(ball: b,
                 state: StateAnim.StateUpDeplBall, position: position, nbSide: nbSide,
                 nbUp: nbUp + GameZone.SpacingFlyingBallPlayground, directionSide: dirHorizontal,
                 directionUp: Direction.DirectionUp));
@@ -79,7 +80,7 @@ public class SwingAnimator : Animator
 
     public void AddDropingBall(Ball b, Vector2 position, float nbUp = 0)
     {
-        Vector2Int posRounded = new Vector2Int((int) Math.Round(position.x), (int) Math.Round(position.y - 1));
+        Vector2Int posRounded = new Vector2Int((int)Math.Round(position.x), (int)Math.Round(position.y - 1));
         if (_gameZone.IsPositionFree(posRounded))
         {
             _floatingBallsContainers.Add(
@@ -91,7 +92,7 @@ public class SwingAnimator : Animator
         else
         {
             Debug.Log("Bad SwingAnimator.AddDropingBall call at position : " + position);
-            _gameZone.Playground[(int) Math.Round(position.y)][(int) Math.Round(position.x)].Ball = b;
+            _gameZone.Playground[(int)Math.Round(position.y)][(int)Math.Round(position.x)].Ball = b;
         }
     }
 
@@ -129,8 +130,8 @@ public class SwingAnimator : Animator
         for (int i = 0; i < sizeToRemove; i++)
         {
             FloatingBallContainer floatingBall = toRemove[i];
-            int posX = (int) Math.Round(floatingBall.Position.x);
-            int posY = (int) Math.Round(floatingBall.Position.y);
+            int posX = (int)Math.Round(floatingBall.Position.x);
+            int posY = (int)Math.Round(floatingBall.Position.y);
             if (GameZone.IsInPlaygroundBounds(new Vector2(posX, posY)))
             {
                 AudioManager audioManager = AudioManager.GetInstance();
@@ -147,7 +148,7 @@ public class SwingAnimator : Animator
                 floatingBall.Paused = true;
                 gameOver = true;
             }
-            
+
         }
 
         return gameOver;
@@ -214,17 +215,36 @@ public class SwingAnimator : Animator
     {
         if (floatingBall.NbSide > 0)
         {
+
             //Ball is arrived at the edge of the gamezone so it has to swap to the other side
             ComputeSideDepl(floatingBall, GameZone.LengthPlayGround);
             float depl = (floatingBall.Direction == Direction.DirectionRight ? -1 : 1) *
-                         (GameZone.LengthPlayGround * GameZone.SpacingBall + 2f * GameZone.DistanceExitFlying - GameZone.SpacingBall) ;
+                         (GameZone.LengthPlayGround * GameZone.SpacingBall + 2f * GameZone.DistanceExitFlying - GameZone.SpacingBall);
             floatingBall.ContainerObject.transform.Translate(new Vector3(depl, 0, 0));
-            floatingBall.TransformBall();
+
+            //send the object to the other player.
+            if (MultiplayerSystem.getInstance() != null)
+            {
+                //move container to center zone
+                floatingBall.ContainerObject.transform.Translate(-_gameZone.ZoneGlobal.transform.position.x, 0, 0);
+                //create data to send
+                MultiplayerData data = new MultiplayerData();
+                data.Sender = this;
+                data.Data = floatingBall;
+                //Remove the floating ball containers from this player
+                this._floatingBallsContainers.Remove(floatingBall);
+                //send data
+                MultiplayerSystem.getInstance().SendData(data);
+            }
+            else
+            {
+                floatingBall.TransformBall();
+            }
         }
         else
         {
             // Ball is arrived at the column of destination so it has to go down
-            int posX = (int) Math.Round((floatingBall.Position.x +
+            int posX = (int)Math.Round((floatingBall.Position.x +
                                          (floatingBall.Direction == Direction.DirectionRight ? 1 : -1) *
                                          floatingBall.NbSideTotal %
                                          GameZone.LengthPlayGround +
@@ -239,7 +259,8 @@ public class SwingAnimator : Animator
                 floatingBall.Animation.Change(Orientation.Vertical, Direction.DirectionDown,
                     GameZone.SizeBall + GameZone.SpacingFlyingBallPlayground);
                 if (GameZone.IsInPlaygroundBounds(new Vector2Int(posX, GameZone.HeightPlayGround - 1)))
-                {;
+                {
+                    ;
                     _occupiedByFloating[posX][GameZone.HeightPlayGround - 1] = true;
                 }
             }
@@ -253,8 +274,8 @@ public class SwingAnimator : Animator
     private void ChangeFromDownDepl(FloatingBallContainer floatingBall, List<FloatingBallContainer> toRemove)
     {
         floatingBall.Position += new Vector2(0, -floatingBall.NbUp);
-        int posX = (int) Math.Round(floatingBall.Position.x);
-        int posY = (int) Math.Round(floatingBall.Position.y);
+        int posX = (int)Math.Round(floatingBall.Position.x);
+        int posY = (int)Math.Round(floatingBall.Position.y);
 
         if (_gameZone.IsPositionFree(new Vector2Int(posX, posY - 1)))
         {
@@ -329,15 +350,15 @@ public class SwingAnimator : Animator
         for (int i = 0; i < sizeFloatingBall; i++)
         {
             FloatingBallContainer floatingBall = _floatingBallsContainers[i];
-            int posX = (int) Math.Round(floatingBall.Position.x);
-            int posY = (int) Math.Round(floatingBall.Position.y);
+            int posX = (int)Math.Round(floatingBall.Position.x);
+            int posY = (int)Math.Round(floatingBall.Position.y);
             if (floatingBall.State == StateAnim.StateDownDeplBall && posX == swingPosition.x &&
-                posY-floatingBall.NbUp <= swingPosition.y + nbDropingBallAtCol)
+                posY - floatingBall.NbUp <= swingPosition.y + nbDropingBallAtCol)
             {
                 if (removeFromFloatingBalls)
                 {
                     floatingBall.Position += new Vector2(0, -floatingBall.NbUp);
-                    _occupiedByFloating[posX][(int) Math.Round(posY-floatingBall.NbUp)] = false;
+                    _occupiedByFloating[posX][(int)Math.Round(posY - floatingBall.NbUp)] = false;
                     _dropingBallByCol[posX]--;
                 }
                 listFloatingBallContainersToCompute.Add(floatingBall);
@@ -347,7 +368,7 @@ public class SwingAnimator : Animator
         int sizeToCompute = listFloatingBallContainersToCompute.Count;
         for (int i = 0; i < sizeToCompute; i++)
         {
-            listBalls.Add(new BallAtIndex((int) Math.Round(listFloatingBallContainersToCompute[i].Position.x),
+            listBalls.Add(new BallAtIndex((int)Math.Round(listFloatingBallContainersToCompute[i].Position.x),
                 listFloatingBallContainersToCompute[i].Ball, true));
             if (removeFromFloatingBalls)
             {
@@ -358,11 +379,11 @@ public class SwingAnimator : Animator
 
         return listBalls;
     }
-    
-    public List<Ball> GetBallsBetweenPosition(int positionX, int positionY1,int positionY2, bool removeFromFloatingBalls = false, bool checkForSwings = false)
+
+    public List<Ball> GetBallsBetweenPosition(int positionX, int positionY1, int positionY2, bool removeFromFloatingBalls = false, bool checkForSwings = false)
     {
         if (positionY1 > positionY2) (positionY1, positionY2) = (positionY2, positionY1);
-        
+
         List<Ball> listBalls = new List<Ball>();
         List<FloatingBallContainer> listFloatingBallContainersToCompute = new List<FloatingBallContainer>();
 
@@ -370,15 +391,15 @@ public class SwingAnimator : Animator
         for (int i = 0; i < sizeFloatingBall; i++)
         {
             FloatingBallContainer floatingBall = _floatingBallsContainers[i];
-            int posX = (int) Math.Round(floatingBall.Position.x);
-            int posY = (int) Math.Round(floatingBall.Position.y);
+            int posX = (int)Math.Round(floatingBall.Position.x);
+            int posY = (int)Math.Round(floatingBall.Position.y);
             if (floatingBall.State == StateAnim.StateDownDeplBall && posX == positionX &&
-                posY-floatingBall.NbUp >= positionY1 && posY-floatingBall.NbUp <= positionY2)
+                posY - floatingBall.NbUp >= positionY1 && posY - floatingBall.NbUp <= positionY2)
             {
                 if (removeFromFloatingBalls)
                 {
                     floatingBall.Position += new Vector2(0, -floatingBall.NbUp);
-                    _occupiedByFloating[posX][(int) Math.Round(posY-floatingBall.NbUp)] = false;
+                    _occupiedByFloating[posX][(int)Math.Round(posY - floatingBall.NbUp)] = false;
                     _dropingBallByCol[posX]--;
                 }
                 listFloatingBallContainersToCompute.Add(floatingBall);
@@ -417,5 +438,18 @@ public class SwingAnimator : Animator
         {
             _floatingBallsContainers.Remove(toRemove[i]);
         }
+    }
+
+    public void ReceiveData(MultiplayerData data)
+    {
+
+        //Move the container to the zone
+        data.Data.ContainerObject.transform.Translate(_gameZone.ZoneGlobal.transform.position.x, 0, 0);
+        this._floatingBallsContainers.Add(data.Data);
+    }
+
+    public int PlayerId()
+    {
+        return this._gameZone.GameState.PlayerNumber;
     }
 }

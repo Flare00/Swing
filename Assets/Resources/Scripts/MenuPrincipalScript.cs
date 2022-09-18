@@ -60,14 +60,19 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
         CrossSceneData.Multijoueur = false;
         CrossSceneData.Mission = false;
         CrossSceneData.TransitionMainMenu = true;
+        MultiplayerSystem.RemoveInstance();
+
         transitionScript.LoadSceneWithTransition("Game");
         eventSystem.gameObject.SetActive(false);
+
     }
     public void Multi()
     {
         CrossSceneData.Multijoueur = true;
         CrossSceneData.Mission = false;
         CrossSceneData.TransitionMainMenu = true;
+
+        MultiplayerSystem.CreateInstance(false);
         transitionScript.LoadSceneWithTransition("Game");
         eventSystem.gameObject.SetActive(false);
     }
@@ -84,7 +89,6 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
 
     public void Instruction()
     {
-
         CrossSceneData.TransitionMainMenu = true;
         transitionScript.LoadSceneWithTransition("Instruction");
     }

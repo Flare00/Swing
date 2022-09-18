@@ -45,6 +45,8 @@ public class Game
         _multijoueur = multijoueur;
         _pause = false;
         _state = new GameState();
+        _state.Multiplayer = multijoueur;
+        _state.PlayerNumber = idJoueur;
         _zone = new GameZone(_state);
 
         _state.Name = "Player " + idJoueur + 1;

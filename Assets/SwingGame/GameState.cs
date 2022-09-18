@@ -28,6 +28,9 @@ public class GameState
     private string _name;
     private SpecialBall _nextPu;
     private NormalBall _levelBall;
+    private bool _multiplayer;
+    private int _playerNumber;
+
 
     public GameState()
     {
@@ -41,8 +44,10 @@ public class GameState
         _gameOverRow = 0;
         BallFactory.getInstance().RefreshPu(this);
         BallFactory.getInstance().RefreshLevelBall(this);
+        Multiplayer = false;
     }
-
+    public bool Multiplayer { get => _multiplayer; set => _multiplayer = value; }
+    public int PlayerNumber { get => _playerNumber; set => _playerNumber = value; }
     public int Level { get => _level; }
     public ulong Score { get => _score; }
     public int Multiplicator { get => _multiplicator; }
