@@ -1,10 +1,15 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class CutterBall : SpecialBall
 {
     public CutterBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Cutter", typeof(GameObject))) as GameObject;
+
+        LocalizedString header = new LocalizedString("PowerUp", "cutter_h");
+        LocalizedString content = new LocalizedString("PowerUp", "cutter_c");
+        this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
     }
 
     public override void Action(GameZone zone, int x, int y)

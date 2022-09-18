@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class BombBall : SpecialBall
 {
@@ -7,7 +8,9 @@ public class BombBall : SpecialBall
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Bomb", typeof(GameObject))) as GameObject;
 
-        this.setTooltip("oui", "non");
+        LocalizedString header = new LocalizedString("PowerUp", "bomb_h");
+        LocalizedString content = new LocalizedString("PowerUp", "bomb_c");
+        this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
 
         _exploded = false;
     }

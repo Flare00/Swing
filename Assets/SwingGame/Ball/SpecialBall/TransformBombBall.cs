@@ -1,10 +1,15 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class TransformBombBall : SpecialBall
 {
     public TransformBombBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_BombTransform", typeof(GameObject))) as GameObject;
+
+        LocalizedString header = new LocalizedString("PowerUp", "bombTransform_h");
+        LocalizedString content = new LocalizedString("PowerUp", "bombTransform_c");
+        this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
     }
 
     public override void Action(GameZone zone, int x, int y)

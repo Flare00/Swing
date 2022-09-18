@@ -1,0 +1,197 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: PowerUp_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: a5e8ab23f290ff842a6c2697303989b9, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 129656737792
+    m_Localized: The Bomb
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1595981221888
+    m_Localized: 'On impact, destroys all balls within a 3 by 3 radius from its center.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3337158447104
+    m_Localized: The Joker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3784837484544
+    m_Localized: "Can replace any color.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4129928040448
+    m_Localized: The Cutter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4150417215488
+    m_Localized: Destroys all balls in a column.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4864786878464
+    m_Localized: The HorizontalZap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4866762395648
+    m_Localized: Destroys all balls horizontally from its point of impact.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5698979418112
+    m_Localized: The DiagonalZap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5700690694144
+    m_Localized: Destroys all balls diagonally from its point of impact.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6102672789504
+    m_Localized: "Transforms all the balls of a column by the ball at the top.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6101200588800
+    m_Localized: The Cascade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7452097826816
+    m_Localized: Transforms all balls within a 3 by 3 radius into the ball hit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9230247841792
+    m_Localized: "\rThe Prediction"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7450562711552
+    m_Localized: The SquareCopy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9231459995648
+    m_Localized: Transforms all balls in the first line of the prediction area by
+      the ball hit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10082299727872
+    m_Localized: The Flash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10083134394368
+    m_Localized: Randomly transforms 2 balls per line into the ball hit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10712279994368
+    m_Localized: The DiagonalFlash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10715471859712
+    m_Localized: 'Transforms all the balls diagonally by the ball hit.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11367161843712
+    m_Localized: The TriangleFlash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11367702908928
+    m_Localized: 'Transforms all the balls into a cone by the ball hit.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11824647163904
+    m_Localized: The White Star
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11826224222208
+    m_Localized: "Destroys ALL balls if 3 White Stars are aligned horizontally.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12554720301056
+    m_Localized: The Sting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12555395584000
+    m_Localized: Periodically destroys the balls above and below it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13607293472768
+    m_Localized: The JokerMutation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13352653082624
+    m_Localized: "Transforms all balls of the color and pattern hit into a Bomb.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13607826149376
+    m_Localized: "Transforms all balls of the color and pattern hit into a Joker.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13670438719488
+    m_Localized: "Destroys all balls of the color and pattern hit.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13722586501120
+    m_Localized: The Brick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13726940188672
+    m_Localized: Useless.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13769793392640
+    m_Localized: "The SquareBrick\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13770397372416
+    m_Localized: "Transform all balls within a 3 by 3 radius by a Brick.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13857706004480
+    m_Localized: The Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13858343538688
+    m_Localized: "Completely fills a column with Bricks.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13805327536128
+    m_Localized: "Transforms all balls of the color and pattern hit into a Brick.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13352107823104
+    m_Localized: The BombMutation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13669868294144
+    m_Localized: The DestructiveMutation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13804790665216
+    m_Localized: The BrickMutation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24314621775872
+    m_Localized: The Golden Star
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24315146063872
+    m_Localized: "Destroys ALL balls if 3 Golden Stars are aligned horizontally.\r"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

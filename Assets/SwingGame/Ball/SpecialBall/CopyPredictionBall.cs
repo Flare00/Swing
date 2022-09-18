@@ -1,10 +1,15 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class CopyPredictionBall : SpecialBall
 {
     public CopyPredictionBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_CopyPrediction", typeof(GameObject))) as GameObject;
+
+        LocalizedString header = new LocalizedString("PowerUp", "copyPrediction_h");
+        LocalizedString content = new LocalizedString("PowerUp", "copyPrediction_c");
+        this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
     }
 
     public override void Action(GameZone zone, int x, int y)

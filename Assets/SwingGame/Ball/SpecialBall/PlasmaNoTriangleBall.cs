@@ -1,10 +1,15 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class PlasmaNoTriangleBall : SpecialBall
 {
     public PlasmaNoTriangleBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_PlasmaNoTriangle", typeof(GameObject))) as GameObject;
+
+        LocalizedString header = new LocalizedString("PowerUp", "flashD_h");
+        LocalizedString content = new LocalizedString("PowerUp", "flashD_c");
+        this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
     }
 
     public override void Action(GameZone zone, int x, int y)

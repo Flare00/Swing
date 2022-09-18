@@ -1,0 +1,195 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: PowerUp Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: PowerUp
+  m_TableCollectionNameGuidString: a5e8ab23f290ff842a6c2697303989b9
+  m_Entries:
+  - m_Id: 129656737792
+    m_Key: bomb_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1595981221888
+    m_Key: bomb_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3337158447104
+    m_Key: joker_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3784837484544
+    m_Key: joker_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4129928040448
+    m_Key: cutter_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4150417215488
+    m_Key: cutter_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4864786878464
+    m_Key: zapH_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4866762395648
+    m_Key: zapH_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5698979418112
+    m_Key: zapD_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5700690694144
+    m_Key: zapD_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6101200588800
+    m_Key: copyLine_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6102672789504
+    m_Key: copyLine_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7450562711552
+    m_Key: copySquare_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7452097826816
+    m_Key: copySquare_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9230247841792
+    m_Key: copyPrediction_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9231459995648
+    m_Key: copyPrediction_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10082299727872
+    m_Key: flash_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10083134394368
+    m_Key: flash_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10712279994368
+    m_Key: flashD_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10715471859712
+    m_Key: flashD_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11367161843712
+    m_Key: flashT_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11367702908928
+    m_Key: flashT_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11824647163904
+    m_Key: star_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11826224222208
+    m_Key: star_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12554720301056
+    m_Key: sting_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12555395584000
+    m_Key: sting_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13352107823104
+    m_Key: bombTransform_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13352653082624
+    m_Key: bombTransform_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13607293472768
+    m_Key: jokerTransform_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13607826149376
+    m_Key: jokerTransform_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13669868294144
+    m_Key: destroyTransform _h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13670438719488
+    m_Key: destroyTransform _c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13722586501120
+    m_Key: brick_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13726940188672
+    m_Key: brick_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13769793392640
+    m_Key: brickSquare_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13770397372416
+    m_Key: brickSquare_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13804790665216
+    m_Key: brickTransform_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13805327536128
+    m_Key: brickTransform_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13857706004480
+    m_Key: tower_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13858343538688
+    m_Key: tower_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24314621775872
+    m_Key: starGold_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24315146063872
+    m_Key: starGold_c
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1663510846530

@@ -1,0 +1,201 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: PowerUp_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: a5e8ab23f290ff842a6c2697303989b9, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 129656737792
+    m_Localized: La Bombe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1595981221888
+    m_Localized: "\xC0 l'impact, d\xE9truit toutes les billes dans un rayon de 3
+      par 3 \xE0 partir de son centre."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3337158447104
+    m_Localized: Le Joker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3784837484544
+    m_Localized: "Peut remplacer n'importe quelle couleur.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4129928040448
+    m_Localized: Le Tailleur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4150417215488
+    m_Localized: "D\xE9truit toutes les billes d'une colonne."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4864786878464
+    m_Localized: Le ZapHorizontal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4866762395648
+    m_Localized: "D\xE9truit toutes les billes horizontalement \xE0 partir de son
+      point d'impact."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5698979418112
+    m_Localized: Le ZapDiagonal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5700690694144
+    m_Localized: "D\xE9truit toutes les billes en diagonale \xE0 partir de son point
+      d'impact."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6102672789504
+    m_Localized: Transforme toutes les billes d'une colonne par la bille au sommet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6101200588800
+    m_Localized: La Cascade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7452097826816
+    m_Localized: "Transforme toutes les billes dans un rayon de 3 par 3 par la bille
+      touch\xE9e."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9230247841792
+    m_Localized: "La Pr\xE9diction"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7450562711552
+    m_Localized: "La CopieCarr\xE9e"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9231459995648
+    m_Localized: "Transforme toutes les billes dans la premi\xE8re ligne de la zone
+      de pr\xE9diction par la bille touch\xE9e."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10082299727872
+    m_Localized: Le Flash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10083134394368
+    m_Localized: "Transforme al\xE9atoirement 2 billes par ligne par la bille touch\xE9e."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10712279994368
+    m_Localized: Le FlashDiagonal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10715471859712
+    m_Localized: "Transforme toutes les billes en diagonale par la bille touch\xE9e."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11367161843712
+    m_Localized: Le FlashTriangle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11367702908928
+    m_Localized: "Transforme toutes les billes dans un c\xF4ne par la bille touch\xE9e."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11824647163904
+    m_Localized: "L'\xC9toile Blanche"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11826224222208
+    m_Localized: "D\xE9truit TOUTES les billes si 3 \xC9toiles Blanches sont align\xE9es
+      horizontalement."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12555395584000
+    m_Localized: "D\xE9truit p\xE9riodiquement les balles au dessus et en dessous
+      de lui."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12554720301056
+    m_Localized: Le Sting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13352107823104
+    m_Localized: La MutationBombe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13352653082624
+    m_Localized: "Transforme toutes les balles de la couleur et du motif touch\xE9e
+      en Bombe."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13607826149376
+    m_Localized: "Transforme toutes les balles de la couleur et du motif touch\xE9e
+      en Joker."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13670438719488
+    m_Localized: "D\xE9truit toutes les balles de la couleur et du motif touch\xE9e."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13722586501120
+    m_Localized: La Brique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13726940188672
+    m_Localized: Inutile.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13769793392640
+    m_Localized: "La BriqueCarr\xE9e"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13770397372416
+    m_Localized: Transforme toutes les billes dans un rayon de 3 par 3 par une Brique.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13857706004480
+    m_Localized: La Tour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13858343538688
+    m_Localized: "Remplit enti\xE8rement une colonne avec des Briques."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13805327536128
+    m_Localized: "Transforme toutes les balles de la couleur et du motif touch\xE9e
+      en Brique."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13804790665216
+    m_Localized: La MutationBrique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13669868294144
+    m_Localized: La MutationDestructrice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13607293472768
+    m_Localized: La MutationJoker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24314621775872
+    m_Localized: "L'\xC9toile Dor\xE9e"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24315146063872
+    m_Localized: "D\xE9truit TOUTES les billes si 3 \xC9toiles Dor\xE9es sont align\xE9es
+      horizontalement."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

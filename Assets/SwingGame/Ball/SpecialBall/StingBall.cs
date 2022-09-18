@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Localization;
 
 public class StingBall : SpecialBall
 {
@@ -11,6 +12,10 @@ public class StingBall : SpecialBall
 
         _animator = BallObject.GetComponentInChildren<Animator>();
         _animatorNoRepeat = false;
+
+        LocalizedString header = new LocalizedString("PowerUp", "sting_h");
+        LocalizedString content = new LocalizedString("PowerUp", "sting_c");
+        this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
     }
 
     public override void Action(GameZone zone, int x, int y)
