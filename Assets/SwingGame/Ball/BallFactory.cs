@@ -257,4 +257,15 @@ public class BallFactory
 
         return res;
     }
+
+    public Ball GetTransformedFloatingBallVersus(Ball b)
+    {
+        Ball res = b;
+        if (b.GetType() != typeof(BrickBall))
+        {
+            res = new BrickBall();
+        }
+
+        return res;
+    }
 }

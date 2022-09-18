@@ -69,11 +69,11 @@ public class MultiplayerSystem
         {
             if (coop) //Edit Sended Ball if Coop or versus mode.
             {
-
+                data.Data.TransformBall();
             } 
             else
             {
-
+                data.Data.TransformBallVersus();
             }
 
             if(id == players.Count -1 )

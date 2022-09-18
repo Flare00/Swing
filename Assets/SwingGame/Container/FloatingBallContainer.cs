@@ -88,4 +88,16 @@ public class FloatingBallContainer : BallContainer
         Ball = b;
         Ball.BallObject.transform.position = positionBall;
     }
+
+    public void TransformBallVersus()
+    {
+        if(this.Ball.GetType() != typeof(BrickBall))
+        {
+            Ball b = BallFactory.getInstance().GetTransformedFloatingBallVersus(Ball);
+            Vector3 positionBall = Ball.BallObject.transform.position; //Keep the ball position
+            RemoveBall();
+            Ball = b;
+            Ball.BallObject.transform.position = positionBall;
+        }
+    }
 }
