@@ -28,34 +28,34 @@ public class NormalBall : Ball
 
         int select = idMaterial;
 
-        if (idMaterial < 12)
+        if (idMaterial < 10)
         {
+            r.material = Resources.Load("Material/MaterialBaseColor/MaterialBall", typeof(Material)) as Material;
+        }
+        else if (idMaterial < 20)
+        {
+            r.material = Resources.Load("Material/MaterialBaseColor/MaterialStrip", typeof(Material)) as Material;
+            select -= 10;
+        }
+        else if (idMaterial < 30)
+        {
+            select -= 20;
+            r.material = Resources.Load("Material/MaterialBaseColor/MaterialLosange", typeof(Material)) as Material;
+        }
+        else if (idMaterial < 40)
+        {
+            select -= 30;
             r.material = Resources.Load("Material/MaterialBaseColor/MaterialTriangle", typeof(Material)) as Material;
         }
-        else if (idMaterial < 24)
+        else if (idMaterial < 50)
         {
-            select -= 12;
-            r.material = Resources.Load("Material/MaterialBaseColor/MaterialVoronoi", typeof(Material)) as Material;
-        }
-        else if (idMaterial < 36)
-        {
-            select -= 24;
-            r.material = Resources.Load("Material/MaterialBaseColor/MaterialNoise", typeof(Material)) as Material;
-        }
-        else if (idMaterial < 48)
-        {
-            select -= 36;
-            r.material = Resources.Load("Material/MaterialBaseColor/MaterialStrip", typeof(Material)) as Material;
+            select -= 40;
+            r.material = Resources.Load("Material/MaterialBaseColor/MaterialGrid", typeof(Material)) as Material;
         }
         else if (idMaterial < 60)
         {
-            select -= 48;
-            r.material = Resources.Load("Material/MaterialBaseColor/MaterialLosange", typeof(Material)) as Material;
-        }
-        else if (idMaterial < 72)
-        {
-            select -= 60;
-            r.material = Resources.Load("Material/MaterialBaseColor/MaterialTriangle", typeof(Material)) as Material;
+            select -= 50;
+            r.material = Resources.Load("Material/MaterialBaseColor/MaterialNoise", typeof(Material)) as Material;
         }
         else
         {
@@ -67,16 +67,14 @@ public class NormalBall : Ball
         {
             case 0: r.material.color = Color.blue; break;
             case 1: r.material.color = Color.red; break;
-            case 2: r.material.color = new Color(0.0f, 0.35f, 0.0f); break;
-            case 3: r.material.color = Color.cyan; break;
-            case 4: r.material.color = new Color(0.28f, 0.18f, 0.05f); break;
-            case 5: r.material.color = new Color(0.40f, 0.0f, 0.40f); break;
-            case 6: r.material.color = new Color(0.70f, 0.45f, 0.12f); break;
-            case 7: r.material.color = new Color(0.25f, 0.25f, 0.25f); break;
-            case 8: r.material.color = new Color(0.4f, 1.0f, 0.4f); break;
-            case 9: r.material.color = new Color(1.0f, 0.2f, 1.0f); break;
-            case 10: r.material.color = new Color(1.0f, 0.45f, 0.14f); break;
-            case 11: r.material.color = new Color(1.0f, 1.0f, 0.0f); break;
+            case 2: r.material.color = new Color(0.0f, 1f, 0.0f); break;
+            case 3: r.material.color = new Color(1.0f, 1.0f, 0.0f); break;
+            case 4: r.material.color = Color.cyan; break;
+            case 5: r.material.color = new Color(1.0f, 0.0f, 1.0f); break;
+            case 6: r.material.color = new Color(1.0f, 0.50f, 0.0f); break;
+            case 7: r.material.color = new Color(0.0f, 0.5f, 0.0f); break;
+            case 8: r.material.color = new Color(1.0f, 1.0f, 1.0f); break;
+            case 9: r.material.color = new Color(0.45f, 0.45f, 0.45f); break;
             default:
                 r.material.color = new Color(0.0f, 0.0f, 0.0f);
                 break;
