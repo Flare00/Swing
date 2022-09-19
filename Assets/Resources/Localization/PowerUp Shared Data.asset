@@ -136,11 +136,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 13669868294144
-    m_Key: destroyTransform _h
+    m_Key: destroyTransform_h
     m_Metadata:
       m_Items: []
   - m_Id: 13670438719488
-    m_Key: destroyTransform _c
+    m_Key: destroyTransform_c
     m_Metadata:
       m_Items: []
   - m_Id: 13722586501120

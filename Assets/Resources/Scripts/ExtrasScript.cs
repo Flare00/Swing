@@ -1,31 +1,42 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
-public class ExtrasScript : MonoBehaviour
+public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
 {
 
     public GameObject panelPU;
     public GameObject videoPlayer;
     public GameObject textHeader;
     public GameObject textContent;
+    public TransitionScript transitionScript;
 
     private GameObject ring;
+    private int posX = 0;
+    private int posY = 0;
+
+    private int sizeX = 5;
+    private int sizeY = 5;
 
     public float offsetX;
     public float offsetY;
 
     void Start()
     {
+        ControlsGame cg = new ControlsGame();
+        cg.UI.SetCallbacks(this);
+        cg.UI.Enable();
+
         Ball ball;
 
-
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < sizeY; i++)
         {
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < sizeX; j++)
             {
-                switch ((j + i * 5) + 1)
+                switch ((j + i * sizeY) + 1)
                 {
                     case 1:
                         ball = new JokerBall();
@@ -107,23 +118,22 @@ public class ExtrasScript : MonoBehaviour
                         break;
                 }
                 ball.BallObject.transform.parent = panelPU.transform;
-                ball.BallObject.transform.position = new Vector3(j * 1.5f + offsetX, (4 - i) * 1.5f + offsetY, 0);
+                ball.BallObject.transform.position = new Vector3(j * 1.5f + offsetX, (sizeY - i) * 1.5f + offsetY, 0);
             }
         }
         ring = GameObject.Instantiate(Resources.Load("Prefabs/Extras/Circle", typeof(GameObject))) as GameObject;
         ring.transform.parent = panelPU.transform;
 
-        // Set first hover on Joker : 
-        moveCursor(0, 0);
+        moveCursor(posX, posY); // Set first hover on Joker
     }
 
     void moveCursor(int x, int y)
     {
-        ring.transform.position = new Vector3(x * 1.5f + offsetX, (4 - y) * 1.5f + offsetY, 0);
+        ring.transform.position = new Vector3(x * 1.5f + offsetX, (sizeY - y) * 1.5f + offsetY, 0);
         LocalizedString header;
         LocalizedString content;
 
-        switch ((y + x * 5) + 1)
+        switch ((x + y * sizeX) + 1)
         {
             case 1:
                 // ball = new JokerBall();
@@ -200,8 +210,8 @@ public class ExtrasScript : MonoBehaviour
             case 10:
                 // ball = new GoldenStarBall();
                 videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
-                header = new LocalizedString("PowerUp", "goldenStar_h");
-                content = new LocalizedString("PowerUp", "goldenStar_c");
+                header = new LocalizedString("PowerUp", "starGold_h");
+                content = new LocalizedString("PowerUp", "starGold_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
                 textContent.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = content.GetLocalizedString();
                 break;
@@ -335,4 +345,81 @@ public class ExtrasScript : MonoBehaviour
                 break;
         }
     }
+
+    void ControlsGame.IUIActions.OnMove(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Vector2 coords = context.ReadValue<Vector2>();
+            if (coords.x > 0.01f)
+            {
+                posX++;
+                if (posX >= sizeX)
+                {
+                    posX = 0;
+                }
+            }
+            else if (coords.x < -0.01f)
+            {
+                posX--;
+                if (posX < 0)
+                {
+                    posX = sizeX - 1;
+                }
+            }
+            if (coords.y < -0.01f)
+            {
+                posY++;
+                if (posY >= sizeY)
+                {
+                    posY = 0;
+                }
+            }
+            else if (coords.y > 0.01f)
+            {
+                posY--;
+                if (posY < 0)
+                {
+                    posY = sizeY - 1;
+                }
+            }
+            moveCursor(posX, posY);
+        }
+    }
+
+    void ControlsGame.IUIActions.OnSubmit(InputAction.CallbackContext context)
+    {
+    }
+
+    void ControlsGame.IUIActions.OnLeftClick(InputAction.CallbackContext context)
+    {
+    }
+
+    void ControlsGame.IUIActions.OnRightClick(InputAction.CallbackContext context)
+    {
+    }
+
+    void ControlsGame.IUIActions.OnMiddleClick(InputAction.CallbackContext context)
+    {
+    }
+
+    void ControlsGame.IUIActions.OnScroll(InputAction.CallbackContext context)
+    {
+    }
+
+    void ControlsGame.IUIActions.OnCancel(InputAction.CallbackContext context)
+    {
+    }
+
+    void ControlsGame.IUIActions.OnPoint(InputAction.CallbackContext context)
+    {
+        Debug.Log(context.ReadValue<Vector2>());
+    }
+
+    public void BackAction()
+    {
+        transitionScript.LoadSceneWithTransition("Menu");
+    }
 }
+
+
