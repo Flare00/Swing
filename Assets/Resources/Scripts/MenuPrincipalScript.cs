@@ -90,7 +90,7 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
     public void Instruction()
     {
         CrossSceneData.TransitionMainMenu = true;
-        transitionScript.LoadSceneWithTransition("Instruction");
+        transitionScript.LoadSceneWithTransition("Extras");
     }
 
     public void Options()

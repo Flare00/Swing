@@ -1919,6 +1919,7 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 0}
   m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!114 &936102608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2338,7 +2339,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rules
+  m_text: Extras
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e31a4772f3ca38449ba1cb309f7f4401, type: 2}
   m_sharedMaterial: {fileID: 1462631965353317610, guid: e31a4772f3ca38449ba1cb309f7f4401, type: 2}

@@ -2,16 +2,17 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Localization;
-using UnityEngine.Localization.Components;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
 {
 
     public GameObject panelPU;
-    public GameObject videoPlayer;
+    public VideoPlayer videoPlayer;
     public GameObject textHeader;
     public GameObject textContent;
+
     public TransitionScript transitionScript;
 
     private GameObject ring;
@@ -26,6 +27,8 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
 
     void Start()
     {
+        transitionScript.ReverseTransition();
+
         ControlsGame cg = new ControlsGame();
         cg.UI.SetCallbacks(this);
         cg.UI.Enable();
@@ -137,7 +140,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
         {
             case 1:
                 // ball = new JokerBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "joker_h");
                 content = new LocalizedString("PowerUp", "joker_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -145,7 +148,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 2:
                 // ball = new BombBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoBomb", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "bomb_h");
                 content = new LocalizedString("PowerUp", "bomb_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -153,7 +156,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 3:
                 // ball = new CutterBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoCutter", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "cutter_h");
                 content = new LocalizedString("PowerUp", "cutter_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -161,7 +164,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 4:
                 // ball = new ZapHorizontalBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoZapH", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "zapH_h");
                 content = new LocalizedString("PowerUp", "zapH_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -169,7 +172,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 5:
                 // ball = new ZapDiagonalBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoZapD", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "zapD_h");
                 content = new LocalizedString("PowerUp", "zapD_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -177,7 +180,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 6:
                 // ball = new CopyLineBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoCopyLine", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "copyLine_h");
                 content = new LocalizedString("PowerUp", "copyLine_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -185,7 +188,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 7:
                 // ball = new CopySquareBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoCopySquare", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "copySquare_h");
                 content = new LocalizedString("PowerUp", "copySquare_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -193,7 +196,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 8:
                 // ball = new CopyPredictionBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoCopyPrediction", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "copyPrediction_h");
                 content = new LocalizedString("PowerUp", "copyPrediction_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -201,7 +204,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 9:
                 // ball = new StarBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoStarWhite", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "star_h");
                 content = new LocalizedString("PowerUp", "star_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -209,7 +212,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 10:
                 // ball = new GoldenStarBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoStarGolden", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "starGold_h");
                 content = new LocalizedString("PowerUp", "starGold_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -217,7 +220,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 11:
                 // ball = new PlasmaNoTriangleBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoFlash", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "flash_h");
                 content = new LocalizedString("PowerUp", "flash_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -225,7 +228,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 12:
                 // ball = new PlasmaEmptyTriangleBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoFlashD", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "flashD_h");
                 content = new LocalizedString("PowerUp", "flashD_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -233,7 +236,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 13:
                 // ball = new PlasmaFullTriangleBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoFlashT", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "flashT_h");
                 content = new LocalizedString("PowerUp", "flashT_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -241,7 +244,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 14:
                 // ball = new BrickBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoBrick", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "brick_h");
                 content = new LocalizedString("PowerUp", "brick_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -249,7 +252,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 15:
                 // ball = new BrickSquare();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoBrickSquare", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "brickSquare_h");
                 content = new LocalizedString("PowerUp", "brickSquare_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -257,7 +260,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 16:
                 // ball = new TransformJokerBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoJokerTransform", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "jokerTransform_h");
                 content = new LocalizedString("PowerUp", "jokerTransform_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -265,7 +268,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 17:
                 // ball = new TransformBombBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoBombTransform", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "bombTransform_h");
                 content = new LocalizedString("PowerUp", "bombTransform_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -273,7 +276,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 18:
                 // ball = new TransformDestroyBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoDestroyTransform", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "destroyTransform_h");
                 content = new LocalizedString("PowerUp", "destroyTransform_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -281,7 +284,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 19:
                 // ball = new TransformBrickBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoBrickTransform", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "brickTransform_h");
                 content = new LocalizedString("PowerUp", "brickTransform_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -289,7 +292,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 20:
                 // ball = new BrickTower();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoTower", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "tower_h");
                 content = new LocalizedString("PowerUp", "tower_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -297,7 +300,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 21:
                 // ball = new StingBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoSting", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "sting_h");
                 content = new LocalizedString("PowerUp", "sting_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -305,7 +308,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 22:
                 // Tornado
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "joker_h");
                 content = new LocalizedString("PowerUp", "joker_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -313,7 +316,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 23:
                 // Blackout
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "joker_h");
                 content = new LocalizedString("PowerUp", "joker_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -321,7 +324,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 24:
                 // Random
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "joker_h");
                 content = new LocalizedString("PowerUp", "joker_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -329,7 +332,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 25:
                 // ?
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "joker_h");
                 content = new LocalizedString("PowerUp", "joker_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -337,7 +340,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             default:
                 // ball = new BombBall();
-                videoPlayer.gameObject.GetComponent<RawImage>().texture = Resources.Load("Videos/TextureStack", typeof(Texture)) as Texture;
+                videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "bomb_h");
                 content = new LocalizedString("PowerUp", "bomb_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -413,7 +416,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
 
     void ControlsGame.IUIActions.OnPoint(InputAction.CallbackContext context)
     {
-        Debug.Log(context.ReadValue<Vector2>());
+        // Debug.Log(context.ReadValue<Vector2>());
     }
 
     public void BackAction()
