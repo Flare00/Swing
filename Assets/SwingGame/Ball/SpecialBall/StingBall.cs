@@ -6,7 +6,7 @@ public class StingBall : SpecialBall
     private Animator _animator;
     private bool _animatorNoRepeat;
 
-    public StingBall() : base()
+    public StingBall(bool tooltip = true) : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Sting", typeof(GameObject))) as GameObject;
 
@@ -15,7 +15,11 @@ public class StingBall : SpecialBall
 
         LocalizedString header = new LocalizedString("PowerUp", "sting_h");
         LocalizedString content = new LocalizedString("PowerUp", "sting_c");
-        this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
+        
+        if (tooltip)
+        {
+            this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
+        }
     }
 
     public override void Action(GameZone zone, int x, int y)

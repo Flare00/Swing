@@ -3,13 +3,17 @@ using UnityEngine.Localization;
 
 public class StarBall : SpecialBall
 {
-    public StarBall() : base()
+    public StarBall(bool tooltip = true) : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Star", typeof(GameObject))) as GameObject;
 
         LocalizedString header = new LocalizedString("PowerUp", "star_h");
         LocalizedString content = new LocalizedString("PowerUp", "star_c");
-        this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
+        
+        if (tooltip)
+        {
+            this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
+        }
     }
 
     public override void Action(GameZone zone, int x, int y)

@@ -4,13 +4,16 @@ using UnityEngine.Localization;
 
 public class ZapHorizontalBall : SpecialBall
 {
-    public ZapHorizontalBall() : base()
+    public ZapHorizontalBall(bool tooltip = true) : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_ZapH", typeof(GameObject))) as GameObject;
 
         LocalizedString header = new LocalizedString("PowerUp", "zapH_h");
         LocalizedString content = new LocalizedString("PowerUp", "zapH_c");
-        this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
+        if (tooltip)
+        {
+            this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
+        }
     }
 
     public override void Action(GameZone zone, int x, int y)

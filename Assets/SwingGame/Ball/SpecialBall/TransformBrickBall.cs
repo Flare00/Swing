@@ -3,13 +3,17 @@ using UnityEngine.Localization;
 
 public class TransformBrickBall : SpecialBall
 {
-    public TransformBrickBall() : base()
+    public TransformBrickBall(bool tooltip = true) : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_BrickTransform", typeof(GameObject))) as GameObject;
 
         LocalizedString header = new LocalizedString("PowerUp", "brickTransform_h");
         LocalizedString content = new LocalizedString("PowerUp", "brickTransform_c");
-        this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
+        
+        if (tooltip)
+        {
+            this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
+        }
     }
 
     public override void Action(GameZone zone, int x, int y)

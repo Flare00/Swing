@@ -30,7 +30,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
         transitionScript.ReverseTransition();
 
         ControlsGame cg = new ControlsGame();
-        cg.UI.SetCallbacks(this);
+
         cg.UI.Enable();
 
         Ball ball;
@@ -43,86 +43,92 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 switch ((j + i * sizeY) + 1)
                 {
                     case 1:
-                        ball = new JokerBall();
+                        ball = new JokerBall(false);
                         break;
                     case 2:
-                        ball = new BombBall();
+                        ball = new BombBall(false);
                         break;
                     case 3:
-                        ball = new CutterBall();
+                        ball = new CutterBall(false);
                         break;
                     case 4:
-                        ball = new ZapHorizontalBall();
+                        ball = new ZapHorizontalBall(false);
                         break;
                     case 5:
-                        ball = new ZapDiagonalBall();
+                        ball = new ZapDiagonalBall(false);
                         break;
                     case 6:
-                        ball = new CopyLineBall();
+                        ball = new CopyLineBall(false);
                         break;
                     case 7:
-                        ball = new CopySquareBall();
+                        ball = new CopySquareBall(false);
                         break;
                     case 8:
-                        ball = new CopyPredictionBall();
+                        ball = new CopyPredictionBall(false);
                         break;
                     case 9:
-                        ball = new StarBall();
+                        ball = new StarBall(false);
                         break;
                     case 10:
-                        ball = new GoldenStarBall();
+                        ball = new GoldenStarBall(false);
                         break;
                     case 11:
-                        ball = new PlasmaNoTriangleBall();
+                        ball = new PlasmaNoTriangleBall(false);
                         break;
                     case 12:
-                        ball = new PlasmaEmptyTriangleBall();
+                        ball = new PlasmaEmptyTriangleBall(false);
                         break;
                     case 13:
-                        ball = new PlasmaFullTriangleBall();
+                        ball = new PlasmaFullTriangleBall(false);
                         break;
                     case 14:
-                        ball = new BrickBall();
+                        ball = new BrickBall(false);
                         break;
                     case 15:
-                        ball = new BrickSquare();
+                        ball = new BrickSquare(false);
                         break;
                     case 16:
-                        ball = new TransformJokerBall();
+                        ball = new TransformJokerBall(false);
                         break;
                     case 17:
-                        ball = new TransformBombBall();
+                        ball = new TransformBombBall(false);
                         break;
                     case 18:
-                        ball = new TransformDestroyBall();
+                        ball = new TransformDestroyBall(false);
                         break;
                     case 19:
-                        ball = new TransformBrickBall();
+                        ball = new TransformBrickBall(false);
                         break;
                     case 20:
-                        ball = new BrickTower();
+                        ball = new BrickTower(false);
                         break;
                     case 21:
-                        ball = new StingBall();
+                        ball = new StingBall(false);
                         break;
                     case 22:
-                        ball = new TornadoBall();
+                        ball = new TornadoBall(false);
                         break;
                     case 23:
-                        ball = new JokerBall(); // Blackout
+                        ball = new JokerBall(false); // Blackout
                         break;
                     case 24:
-                        ball = new JokerBall(); // Random
+                        ball = new JokerBall(false); // Random
                         break;
                     case 25:
-                        ball = new JokerBall(); // ?
+                        ball = new JokerBall(false); // ?
                         break;
                     default:
-                        ball = new BombBall();
+                        ball = new BombBall(false);
                         break;
                 }
+
                 ball.BallObject.transform.parent = panelPU.transform;
                 ball.BallObject.transform.position = new Vector3(j * 1.5f + offsetX, (sizeY - i) * 1.5f + offsetY, 0);
+                ball.BallObject.AddComponent<SphereCollider>();
+                ExtrasTriggerScript script = ball.BallObject.AddComponent<ExtrasTriggerScript>();
+                script.x = j;
+                script.y = i;
+                script.mainScript = this;
             }
         }
         ring = GameObject.Instantiate(Resources.Load("Prefabs/Extras/Circle", typeof(GameObject))) as GameObject;
@@ -131,7 +137,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
         moveCursor(posX, posY); // Set first hover on Joker
     }
 
-    void moveCursor(int x, int y)
+    public void moveCursor(int x, int y)
     {
         if(ring == null)
         {

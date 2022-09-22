@@ -3,13 +3,17 @@ using UnityEngine.Localization;
 
 public class CopySquareBall : SpecialBall
 {
-    public CopySquareBall() : base()
+    public CopySquareBall(bool tooltip = true) : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_CopySquare", typeof(GameObject))) as GameObject;
 
         LocalizedString header = new LocalizedString("PowerUp", "copySquare_h");
         LocalizedString content = new LocalizedString("PowerUp", "copySquare_c");
-        this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
+        
+        if (tooltip)
+        {
+            this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
+        }
     }
 
     public override void Action(GameZone zone, int x, int y)

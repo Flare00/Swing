@@ -4,7 +4,7 @@ using UnityEngine.Localization;
 public class GoldenStarBall : SpecialBall
 {
     public static int GoldenStarBonusMultScore = 4;
-    public GoldenStarBall() : base()
+    public GoldenStarBall(bool tooltip = true) : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Star", typeof(GameObject))) as GameObject;
         this.BallObject.transform.GetChild(0).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.yellow * 7.0f);
@@ -12,7 +12,11 @@ public class GoldenStarBall : SpecialBall
 
         LocalizedString header = new LocalizedString("PowerUp", "starGold_h");
         LocalizedString content = new LocalizedString("PowerUp", "starGold_c");
-        this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
+        
+        if (tooltip)
+        {
+            this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
+        }
     }
 
     public override void Action(GameZone zone, int x, int y)
