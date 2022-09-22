@@ -15,7 +15,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
 
     public TransitionScript transitionScript;
 
-    private GameObject ring;
+    private GameObject ring = null;
     private int posX = 0;
     private int posY = 0;
 
@@ -34,6 +34,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
         cg.UI.Enable();
 
         Ball ball;
+
 
         for (int i = 0; i < sizeY; i++)
         {
@@ -105,7 +106,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                         ball = new StingBall();
                         break;
                     case 22:
-                        ball = new JokerBall(); // Tornado
+                        ball = new TornadoBall();
                         break;
                     case 23:
                         ball = new JokerBall(); // Blackout
@@ -132,6 +133,10 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
 
     void moveCursor(int x, int y)
     {
+        if(ring == null)
+        {
+            return;
+        }
         ring.transform.position = new Vector3(x * 1.5f + offsetX, (sizeY - y) * 1.5f + offsetY, 0);
         LocalizedString header;
         LocalizedString content;
@@ -309,8 +314,8 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
             case 22:
                 // Tornado
                 videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
-                header = new LocalizedString("PowerUp", "joker_h");
-                content = new LocalizedString("PowerUp", "joker_c");
+                header = new LocalizedString("PowerUp", "tornado_h");
+                content = new LocalizedString("PowerUp", "tornado_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
                 textContent.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = content.GetLocalizedString();
                 break;
@@ -416,7 +421,6 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
 
     void ControlsGame.IUIActions.OnPoint(InputAction.CallbackContext context)
     {
-        // Debug.Log(context.ReadValue<Vector2>());
     }
 
     public void BackAction()

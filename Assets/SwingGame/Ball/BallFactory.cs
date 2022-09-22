@@ -129,7 +129,8 @@ public class BallFactory
     public void RefreshPu(GameState gs)
     {
         int bearingIndex = getBearingIndex(gs);
-        int counterPu;
+        int counterPu = 10;
+        /*
         if (bearingIndex == BEARINGS_LEVEL.Length)
         {
             float multCompute = (gs.Multiplicator - GameState.MULTIPLICATOR_MIN) /
@@ -145,6 +146,7 @@ public class BallFactory
         {
             counterPu = COUNTER_PU[bearingIndex] + GameState.MULTIPLICATOR_MAX - gs.Multiplicator;
         }
+        */
 
         gs.NextPu = GeneratePu(gs);
         gs.CountPowerUp =
@@ -155,6 +157,7 @@ public class BallFactory
 
     private SpecialBall GeneratePu(GameState gs)
     {
+        /*
         float randProbability = Random.Range(0, Int32.MaxValue) / (float) Int32.MaxValue;
         float countProbability = 0;
 
@@ -172,8 +175,9 @@ public class BallFactory
                 return generatePUByID(PUTypes[i]);
             }
         }
+        */
 
-        return generatePUByID(lastPuType);
+        return new TornadoBall();
     }
 
     private SpecialBall generatePUByID(PuType puType)
