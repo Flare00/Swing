@@ -19,11 +19,11 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 24695296000
-    m_Localized: Un Joueur
+    m_Localized: Solo
     m_Metadata:
       m_Items: []
   - m_Id: 629778173952
-    m_Localized: Deux Joueur
+    m_Localized: Coop
     m_Metadata:
       m_Items: []
   - m_Id: 760095199232
@@ -136,6 +136,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 332671464263680
     m_Localized: Veuillez entrer votre nom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56996641804439552
+    m_Localized: Missions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56996699681640448
+    m_Localized: Duel
     m_Metadata:
       m_Items: []
   references:

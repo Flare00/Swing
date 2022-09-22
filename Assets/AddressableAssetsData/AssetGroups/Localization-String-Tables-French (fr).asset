@@ -23,12 +23,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-fr
     - Preload
-  - m_GUID: e0d505941d5f43348b0235e12a16fbc1
-    m_Address: instructions_fr
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-fr
-    - Preload
   - m_GUID: 8681f33403a13b049835103ede251192
     m_Address: PowerUp_fr
     m_ReadOnly: 1

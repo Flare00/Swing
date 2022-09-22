@@ -82,9 +82,9 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
         /*CrossSceneData.Multijoueur = false;
         CrossSceneData.Mission = true;
         SceneManager.LoadScene("Game");*/
-        CrossSceneData.TransitionMainMenu = true;
+        // CrossSceneData.TransitionMainMenu = true;
         Debug.Log("Mission Clicked");
-        MissionSelector.getInstance().Test();
+        // MissionSelector.getInstance().Test();
     }
 
     public void Instruction()
@@ -136,7 +136,8 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
 
     public void ShowSelectGameMode()
     {
-        eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(buttonBackSelectGameMode.gameObject);
+        buttonsContainer.SetActive(false);
+        eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(selectGameMode.transform.Find("Button_Solo").gameObject);
         _selectGameModeShow = true;
         selectGameMode.SetActive(true);
     }
@@ -145,6 +146,7 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
         eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(buttonsContainer.transform.Find("Button_Play").gameObject);
         _selectGameModeShow = false;
         selectGameMode.SetActive(false);
+        buttonsContainer.SetActive(true);
     }
 
 

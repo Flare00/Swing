@@ -198,11 +198,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 796196052717568
-    m_Localized: TODO
+    m_Localized: La Tornade
     m_Metadata:
       m_Items: []
   - m_Id: 796197579444224
-    m_Localized: TODO
+    m_Localized: "Fait voler toutes les billes d'une colonne sur une distance al\xE9atoire."
     m_Metadata:
       m_Items: []
   references:
