@@ -20,7 +20,7 @@ public class BallFactory
         new[] {17, 19}
     };
 
-    private static int[] COUNTER_PU = {GameState.BALL_BY_LEVEL + 1, 8, 8, 7, 7, 7, 6, 6, 5};
+    private static int[] COUNTER_PU = { GameState.BALL_BY_LEVEL + 1, 8, 8, 7, 7, 7, 6, 6, 5 };
 
     //Value for Difficulty Curves
     private static int countAtMinLevel = COUNTER_PU[COUNTER_PU.Length - 1];
@@ -129,8 +129,7 @@ public class BallFactory
     public void RefreshPu(GameState gs)
     {
         int bearingIndex = getBearingIndex(gs);
-        int counterPu = 10;
-        /*
+        int counterPu;
         if (bearingIndex == BEARINGS_LEVEL.Length)
         {
             float multCompute = (gs.Multiplicator - GameState.MULTIPLICATOR_MIN) /
@@ -140,13 +139,12 @@ public class BallFactory
                 ? (countAtMinLevel - val1) / (minLevel - levelAtMinCount)
                 : inclination;
             float val3 = gs.Level - levelAtMinCount;
-            counterPu = (int) Math.Round(val2 * val3 + val1);
+            counterPu = (int)Math.Round(val2 * val3 + val1);
         }
         else
         {
             counterPu = COUNTER_PU[bearingIndex] + GameState.MULTIPLICATOR_MAX - gs.Multiplicator;
         }
-        */
 
         gs.NextPu = GeneratePu(gs);
         gs.CountPowerUp =
@@ -157,8 +155,7 @@ public class BallFactory
 
     private SpecialBall GeneratePu(GameState gs)
     {
-        /*
-        float randProbability = Random.Range(0, Int32.MaxValue) / (float) Int32.MaxValue;
+        float randProbability = Random.Range(0, Int32.MaxValue) / (float)Int32.MaxValue;
         float countProbability = 0;
 
         Array puENum = Enum.GetValues(typeof(PuType));
@@ -175,9 +172,8 @@ public class BallFactory
                 return generatePUByID(PUTypes[i]);
             }
         }
-        */
 
-        return new TornadoBall();
+        return generatePUByID(lastPuType);
     }
 
     private SpecialBall generatePUByID(PuType puType)
