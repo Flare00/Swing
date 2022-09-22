@@ -25,10 +25,6 @@ MonoBehaviour:
     m_Address: Assets/Resources/Localization/Assets/Assets Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
-  - m_GUID: 305dac154f9a38c4ba8ad8b67c136c8e
-    m_Address: Assets/Resources/Localization/instructions Shared Data.asset
-    m_ReadOnly: 1
-    m_SerializedLabels: []
   - m_GUID: a5e8ab23f290ff842a6c2697303989b9
     m_Address: Assets/Resources/Localization/PowerUp Shared Data.asset
     m_ReadOnly: 1
