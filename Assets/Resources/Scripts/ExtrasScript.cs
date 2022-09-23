@@ -143,6 +143,8 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
         {
             return;
         }
+        if (this.posX != x) this.posX = x;
+        if (this.posY != y) this.posY = y;
         ring.transform.position = new Vector3(x * 1.5f + offsetX, (sizeY - y) * 1.5f + offsetY, 0);
         LocalizedString header;
         LocalizedString content;
