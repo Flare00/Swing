@@ -30,7 +30,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
         transitionScript.ReverseTransition();
 
         ControlsGame cg = new ControlsGame();
-
+        cg.UI.SetCallbacks(this);
         cg.UI.Enable();
 
         Ball ball;
