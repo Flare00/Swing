@@ -32,6 +32,7 @@ public class BallFactory
 
     public enum PuType
     {
+        RandomType,
         JokerType,
         BombType,
         ZapHorizontalType,
@@ -54,6 +55,7 @@ public class BallFactory
 
     private static PuType[] PUTypes =
     {
+        PuType.RandomType,
         PuType.JokerType,
         PuType.BombType,
         PuType.ZapHorizontalType,
@@ -76,6 +78,7 @@ public class BallFactory
 
     private static Dictionary<PuType, float[]> PROBABILITY_PU = new Dictionary<PuType, float[]>
     {
+        {PuType.RandomType, new[] {0.5f, 0.5f, 0.25f, 0.2f, 0.1f, 0.05f, 0, 0, 0, 0}},
         {PuType.JokerType, new[] {0.5f, 0.5f, 0.25f, 0.2f, 0.1f, 0.05f, 0, 0, 0, 0}},
         {PuType.BombType, new[] {0.5f, 0.5f, 0.25f, 0.2f, 0.1f, 0.08f, 0.07f, 0.07f,0.07f, 0.06f}},
         {PuType.ZapHorizontalType, new[] {0, 0, 0.25f, 0.20f, 0.10f, 0.09f, 0.07f, 0.07f, 0.07f, 0.06f}},
@@ -180,6 +183,8 @@ public class BallFactory
     {
         switch (puType)
         {
+            case PuType.RandomType:
+                return new RandomBall();
             case PuType.BombType:
                 return new BombBall();
             case PuType.JokerType:
@@ -267,5 +272,11 @@ public class BallFactory
         }
 
         return res;
+    }
+
+    public SpecialBall giveRandomPU()
+    {
+        // We dont want another random PU at position 0.
+        return generatePUByID(PUTypes[Random.Range(1, PUTypes.Length)]);
     }
 }

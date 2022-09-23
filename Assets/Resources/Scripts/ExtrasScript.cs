@@ -109,13 +109,13 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                         ball = new TornadoBall(false);
                         break;
                     case 23:
-                        ball = new JokerBall(false); // Blackout
+                        ball = new JokerBall(false); // TODO
                         break;
                     case 24:
-                        ball = new JokerBall(false); // Random
+                        ball = new JokerBall(false); // TODO
                         break;
                     case 25:
-                        ball = new JokerBall(false); // ?
+                        ball = new RandomBall(false);
                         break;
                     default:
                         ball = new BombBall(false);
@@ -328,7 +328,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 textContent.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = content.GetLocalizedString();
                 break;
             case 23:
-                // Blackout
+                // ?
                 videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "joker_h");
                 content = new LocalizedString("PowerUp", "joker_c");
@@ -336,7 +336,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 textContent.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = content.GetLocalizedString();
                 break;
             case 24:
-                // Random
+                // ?
                 videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "joker_h");
                 content = new LocalizedString("PowerUp", "joker_c");
@@ -344,10 +344,10 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 textContent.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = content.GetLocalizedString();
                 break;
             case 25:
-                // ?
+                // Random
                 videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
-                header = new LocalizedString("PowerUp", "joker_h");
-                content = new LocalizedString("PowerUp", "joker_c");
+                header = new LocalizedString("PowerUp", "random_h");
+                content = new LocalizedString("PowerUp", "random_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
                 textContent.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = content.GetLocalizedString();
                 break;

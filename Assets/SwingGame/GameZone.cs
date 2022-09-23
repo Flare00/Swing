@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using SwingGame.Media;
 using UnityEngine;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public class GameZone
 {
@@ -275,7 +276,15 @@ public class GameZone
 
             if (generateBall)
             {
-                _player.Ball = _prediction[0][_player.Position].Ball;
+                if (_prediction[0][_player.Position].Ball.GetType() == typeof(RandomBall))
+                {
+                    _player.Ball = BallFactory.getInstance().giveRandomPU();
+                }
+                else
+                {
+                    _player.Ball = _prediction[0][_player.Position].Ball;
+                }
+
                 _prediction[0][_player.Position].Ball = _prediction[1][_player.Position].Ball;
                 _prediction[1][_player.Position].Ball = BallFactory.getInstance().GenerateBall(_gameState);
             }

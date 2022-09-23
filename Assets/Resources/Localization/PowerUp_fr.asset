@@ -205,5 +205,13 @@ MonoBehaviour:
     m_Localized: "Fait voler toutes les billes d'une colonne sur une distance al\xE9atoire."
     m_Metadata:
       m_Items: []
+  - m_Id: 1596814958841856
+    m_Localized: TODO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1596820696649728
+    m_Localized: TODO
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
