@@ -4,13 +4,14 @@ using UnityEngine;
 public class GameMusicManager : MonoBehaviour
 {
     private static GameMusicManager _instance;
-    public AudioClip[] tracks;
-    public AudioSource source;
-    private float _volume = 1.0f;
+    private AudioSource audioSource;
+    public AudioClip[] musicList;
+    private int index = 0;
+    private bool isStopByPlayer;
 
     private void Start()
     {
-        if( _instance != null)
+        if (_instance != null)
         {
             Destroy(gameObject);
         }
@@ -20,30 +21,80 @@ public class GameMusicManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-        source = FindObjectOfType<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        if (source != null && !source.isPlaying)
+        if (!audioSource.isPlaying && !isStopByPlayer)
+            next();
+    }
+
+    public void Play()
+    {
+        if (audioSource != null)
         {
-            source.clip = GetRandomTrack();
-            source.volume = _volume;
-            source.Play();
+            this.audioSource.Play();
+            isStopByPlayer = false;
         }
     }
 
-    private AudioClip GetRandomTrack()
+    public void Pause()
     {
-        return tracks[UnityEngine.Random.Range(0, tracks.Length)];
+        if (audioSource != null)
+        {
+            this.audioSource.Pause();
+            isStopByPlayer = true;
+        }
+    }
+
+    public void Stop()
+    {
+        if (audioSource != null)
+        {
+            this.audioSource.Stop();
+            isStopByPlayer = true;
+        }
+    }
+    public void next()
+    {
+        index++;
+        if (index == musicList.Length)
+            index = 0;
+        if (audioSource != null)
+        {
+            this.audioSource.clip = musicList[index];
+        }
+        Play();
+    }
+
+    public void previous()
+    {
+        index--;
+        if (index < 0)
+            index = musicList.Length - 1;
+        if (audioSource != null)
+        {
+            this.audioSource.clip = musicList[index];
+        }
+        Play();
+    }
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        Pause();
+    }
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+        Play();
     }
 
     public void ChangeVolume(float volume)
     {
-        _volume = volume;
-        if (source != null)
+        if (audioSource != null)
         {
-            this.source.volume = volume;
+            this.audioSource.volume = volume;
         }
     }
 }

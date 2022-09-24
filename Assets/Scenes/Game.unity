@@ -367,6 +367,10 @@ PrefabInstance:
       propertyPath: transition
       value: 
       objectReference: {fileID: 745802451}
+    - target: {fileID: 5864076540515745494, guid: 69bdbcb56d365f04083023217c273f86, type: 3}
+      propertyPath: m_Color.a
+      value: 0.9019608
+      objectReference: {fileID: 0}
     - target: {fileID: 7151710907628483894, guid: 69bdbcb56d365f04083023217c273f86, type: 3}
       propertyPath: m_Name
       value: PauseMenu

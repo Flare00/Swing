@@ -202,11 +202,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1596814958841856
-    m_Localized: TODO
+    m_Localized: The Random
     m_Metadata:
       m_Items: []
   - m_Id: 1596820696649728
-    m_Localized: TODO
+    m_Localized: 'Can become any other power ball once in hand.
+
+'
     m_Metadata:
       m_Items: []
   references:
