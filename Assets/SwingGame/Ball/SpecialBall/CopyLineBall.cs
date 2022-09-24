@@ -5,6 +5,8 @@ public class CopyLineBall : SpecialBall
     public CopyLineBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_CopyLine", typeof(GameObject))) as GameObject;
+        
+        this.type = PuType.CopyLineType;
     }
 
     public override void Action(GameZone zone, int x, int y)

@@ -5,6 +5,7 @@ public class TransformBrickBall : SpecialBall
     public TransformBrickBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_BrickTransform", typeof(GameObject))) as GameObject;
+        this.type = PuType.TransformBrickType;
     }
 
     public override void Action(GameZone zone, int x, int y)

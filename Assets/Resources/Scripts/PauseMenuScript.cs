@@ -104,6 +104,7 @@ public class PauseMenuScript : MonoBehaviour, ISettingsCallBack
 
     public void MainMenuAction()
     {
+        SaveManager.instance.SaveGame();
         transition.LoadSceneWithTransition("Menu");
     }
 

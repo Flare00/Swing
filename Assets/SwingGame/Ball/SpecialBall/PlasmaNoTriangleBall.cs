@@ -5,6 +5,7 @@ public class PlasmaNoTriangleBall : SpecialBall
     public PlasmaNoTriangleBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_PlasmaNoTriangle", typeof(GameObject))) as GameObject;
+        this.type = PuType.PlasmaNoTriangleType;
     }
 
     public override void Action(GameZone zone, int x, int y)

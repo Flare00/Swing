@@ -7,6 +7,7 @@ public abstract class Ball : ICloneable
     private int _weight;
     private int _idMaterial;
     private bool _isNormalBall;
+    protected PuType type;
 
     private GameObject _ballObject;
 
@@ -59,6 +60,9 @@ public abstract class Ball : ICloneable
     public GameObject BallObject { get => _ballObject; set => _ballObject = value; }
     public int IdMaterial { get => _idMaterial; }
     public bool IsNormalBall { get => _isNormalBall; set => _isNormalBall = value; }
+    public PuType Type{
+        get=> type;
+    }
 
     abstract public void Action(GameZone zone, int x, int y);
     public abstract object Clone();

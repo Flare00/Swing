@@ -5,6 +5,8 @@ public class TransformBombBall : SpecialBall
     public TransformBombBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_BombTransform", typeof(GameObject))) as GameObject;
+        this.type = PuType.TransformBombType;
+
     }
 
     public override void Action(GameZone zone, int x, int y)

@@ -1405,6 +1405,7 @@ GameObject:
   - component: {fileID: 864964006}
   - component: {fileID: 864964005}
   - component: {fileID: 864964007}
+  - component: {fileID: 864964008}
   m_Layer: 0
   m_Name: Script Launcher
   m_TagString: Untagged
@@ -1486,6 +1487,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &864964008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864964004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98a3cf9fbcff0e41b663029a2704aff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &901017470 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6667648788556050695, guid: fbc4c58b7de9f4f4fac42a21850c3d88, type: 3}

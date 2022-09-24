@@ -8,6 +8,7 @@ public class GoldenStarBall : SpecialBall
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Star", typeof(GameObject))) as GameObject;
         this.BallObject.transform.GetChild(0).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.yellow * 7.0f);
         this.BallObject.transform.GetChild(0).GetComponent<Renderer>().material.SetColor("_BaseColor", Color.yellow);
+        this.type = PuType.GoldenStarType;
     }
 
     public override void Action(GameZone zone, int x, int y)

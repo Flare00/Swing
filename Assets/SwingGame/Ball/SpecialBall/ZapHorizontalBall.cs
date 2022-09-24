@@ -6,6 +6,7 @@ public class ZapHorizontalBall : SpecialBall
     public ZapHorizontalBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_ZapH", typeof(GameObject))) as GameObject;
+        this.type = PuType.ZapHorizontalType;
     }
 
     public override void Action(GameZone zone, int x, int y)

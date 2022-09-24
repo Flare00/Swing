@@ -105,6 +105,7 @@ public class SwingAnimator : Animator
         return _dropingBallByCol[index];
     }
 
+
     public bool Animate(float deltaT)
     {
         bool gameOver = false;
@@ -417,5 +418,12 @@ public class SwingAnimator : Animator
         {
             _floatingBallsContainers.Remove(toRemove[i]);
         }
+    }
+
+    public bool HasFlyingBall(){
+        for(int i=0;i<GameZone.LengthPlayGround;i++)
+            if(_dropingBallByCol[i]!=0)
+                return true;
+        return false;
     }
 }

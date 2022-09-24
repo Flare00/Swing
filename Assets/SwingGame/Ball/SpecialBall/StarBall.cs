@@ -5,6 +5,7 @@ public class StarBall : SpecialBall
     public StarBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Star", typeof(GameObject))) as GameObject;
+        this.type = PuType.StarType;
     }
 
     public override void Action(GameZone zone, int x, int y)

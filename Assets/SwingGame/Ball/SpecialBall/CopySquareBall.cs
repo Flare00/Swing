@@ -5,6 +5,8 @@ public class CopySquareBall : SpecialBall
     public CopySquareBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_CopySquare", typeof(GameObject))) as GameObject;
+        
+        this.type = PuType.CopySquareType;
     }
 
     public override void Action(GameZone zone, int x, int y)

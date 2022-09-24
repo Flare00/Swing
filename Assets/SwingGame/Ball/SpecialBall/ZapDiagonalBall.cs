@@ -6,6 +6,7 @@ public class ZapDiagonalBall : SpecialBall
     public ZapDiagonalBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_ZapDiag", typeof(GameObject))) as GameObject;
+         this.type = PuType.ZapDiagonalType;
     }
 
     public override void Action(GameZone zone, int x, int y)

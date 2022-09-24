@@ -7,6 +7,7 @@ public class BombBall : SpecialBall
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Bomb", typeof(GameObject))) as GameObject;
         _exploded = false;
+        this.type = PuType.BombType;
     }
 
     public override void Action(GameZone zone, int x, int y)

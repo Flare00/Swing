@@ -6,6 +6,7 @@ public class NormalBall : Ball
 {
     public NormalBall(int weight, int idMaterial = 0) : base(weight, idMaterial)
     {
+        this.type = PuType.NormalType;
         this.IsNormalBall = true;
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/Sphere", typeof(GameObject))) as GameObject;
 

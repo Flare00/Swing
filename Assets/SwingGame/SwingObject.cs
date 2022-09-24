@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class SwingObject
 {
-    private const int SWING_STATE_EQUAL_HEIGHT = 0;
-    private const int SWING_STATE_RIGHT_LOWER = 1;
-    private const int SWING_STATE_LEFT_LOWER = 2;
+    public const int SWING_STATE_EQUAL_HEIGHT = 0;
+    public const int SWING_STATE_RIGHT_LOWER = 1;
+    public const int SWING_STATE_LEFT_LOWER = 2;
     private Transform _parentTransform;
     private Vector2Int _positionLeft, _positionRight;
     private GameObject _swingObjectLeft, _swingObjectRight, _gearObject, _weightObjectLeft, _weightObjectRight;
@@ -56,10 +56,65 @@ public class SwingObject
 
     }
 
+    public SwingObject(Vector2Int positionLeft, Transform parentTransform, int state)
+    {
+
+        Vector2Int positionRight = positionLeft + Vector2Int.right;
+        _parentTransform = parentTransform;
+
+        _positionLeft = positionLeft;
+        _positionRight = positionRight;
+
+        this._swingState = state;
+        if(state ==SWING_STATE_RIGHT_LOWER){
+            _positionLeft.y++;
+            _positionRight.y--;
+        } 
+        else if(state == SWING_STATE_LEFT_LOWER){
+            _positionLeft.y--;
+            _positionRight.y++;
+        } 
+
+        _swingObjectLeft = GameObject.Instantiate(Resources.Load("Prefabs/BalanceL", typeof(GameObject))) as GameObject;
+        _gearObject = GameObject.Instantiate(Resources.Load("Prefabs/Gear", typeof(GameObject))) as GameObject;
+        _swingObjectRight = GameObject.Instantiate(Resources.Load("Prefabs/BalanceR", typeof(GameObject))) as GameObject;
+        _weightObjectLeft = GameObject.Instantiate(Resources.Load("Prefabs/BalanceText", typeof(GameObject))) as GameObject;
+        _weightObjectRight = GameObject.Instantiate(Resources.Load("Prefabs/BalanceText", typeof(GameObject))) as GameObject;
+        _weightObjectLeft.transform.Find("Plane").GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0.75f);
+        _weightObjectRight.transform.Find("Plane").GetComponent<Renderer>().material.color = new Color(0, 0, 0, 0.75f);
+
+        _swingObjectLeft.transform.parent = _parentTransform;
+        _swingObjectRight.transform.parent = _parentTransform;
+
+        _weightObjectLeft.transform.parent = _parentTransform;
+        _weightObjectRight.transform.parent = _parentTransform;
+
+        _swingObjectLeft.transform.Translate(new Vector3(_positionLeft.x * GameZone.SpacingBall, _positionLeft.y * GameZone.SizeBall, 0));
+        _swingObjectRight.transform.Translate(new Vector3(_positionRight.x * GameZone.SpacingBall, _positionRight.y * GameZone.SizeBall, 0));
+
+
+        _gearObject.transform.parent = _parentTransform;
+        _gearObject.transform.Translate(new Vector3(((_positionLeft.x + _positionRight.x) / 2.0f) * GameZone.SpacingBall, -0.45f, 0));
+        _weightColLeft = 0;
+        _weightColRight = 0;
+        _deactivated = false;
+
+        _weightObjectLeft.transform.Translate(new Vector3(_positionLeft.x * GameZone.SpacingBall, (_positionLeft.y - 1.1f) * GameZone.SizeBall, -0.1f));
+        _weightObjectRight.transform.Translate(new Vector3(_positionRight.x * GameZone.SpacingBall, (_positionRight.y - 1.1f) * GameZone.SizeBall, -0.1f));
+
+    
+        
+    }
+
     public bool Deactivated
     {
         get => _deactivated;
         set => _deactivated = value;
+    }
+
+    public int State
+    {
+        get => _swingState;
     }
 
     public SwingAnimator Animator

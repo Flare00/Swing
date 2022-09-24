@@ -8,6 +8,7 @@ public class StingBall : SpecialBall
     public StingBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Sting", typeof(GameObject))) as GameObject;
+        this.type = PuType.StingType;
 
         _animator = BallObject.GetComponentInChildren<Animator>();
         _animatorNoRepeat = false;

@@ -43,6 +43,22 @@ public class GameState
         BallFactory.getInstance().RefreshLevelBall(this);
     }
 
+    public GameState(GameData gd)
+    {
+        _level = gd.level;
+        _score = gd.score;
+        _multiplicator = gd.multiplicator;
+        _nbBallDrop = gd.nbBallDrop;
+        _nbBallBeforeLevelUp = gd.ballBeforeLvUp;
+        _gameOver = false;
+        _gameOverComputing = false;
+        _gameOverRow = 0;
+        _countPowerUp = gd.countPowerUp;
+        _time = gd.time;
+        BallFactory.getInstance().RefreshPu(this);
+        BallFactory.getInstance().RefreshLevelBall(this);
+    }
+
     public int Level { get => _level; }
     public ulong Score { get => _score; }
     public int Multiplicator { get => _multiplicator; }

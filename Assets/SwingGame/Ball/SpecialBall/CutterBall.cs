@@ -5,6 +5,7 @@ public class CutterBall : SpecialBall
     public CutterBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Cutter", typeof(GameObject))) as GameObject;
+        this.type = PuType.CutterType;
     }
 
     public override void Action(GameZone zone, int x, int y)

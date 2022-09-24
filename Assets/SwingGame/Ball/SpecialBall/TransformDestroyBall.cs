@@ -6,6 +6,7 @@ public class TransformDestroyBall : SpecialBall
     public TransformDestroyBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_DestroyTransform", typeof(GameObject))) as GameObject;
+         this.type = PuType.TransformDestroyType;
     }
 
     public override void Action(GameZone zone, int x, int y)

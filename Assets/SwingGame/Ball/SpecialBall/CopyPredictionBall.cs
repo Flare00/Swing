@@ -5,6 +5,8 @@ public class CopyPredictionBall : SpecialBall
     public CopyPredictionBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_CopyPrediction", typeof(GameObject))) as GameObject;
+        
+        this.type = PuType.CopyPredictionType;
     }
 
     public override void Action(GameZone zone, int x, int y)

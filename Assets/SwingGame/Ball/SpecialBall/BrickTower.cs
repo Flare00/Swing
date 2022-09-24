@@ -6,6 +6,7 @@ public class BrickTower : SpecialBall
     public BrickTower() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Tower", typeof(GameObject))) as GameObject;
+        this.type = PuType.BrickTowerType;
     }
 
     public override void Action(GameZone zone, int x, int y)

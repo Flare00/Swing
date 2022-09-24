@@ -30,28 +30,6 @@ public class BallFactory
     private static float importanceMultiplicator = 2;
     private static float inclination = 0.7f;
 
-    public enum PuType
-    {
-        JokerType,
-        BombType,
-        ZapHorizontalType,
-        ZapDiagonalType,
-        CutterType,
-        PlasmaNoTriangleType,
-        PlasmaEmptyTriangleType,
-        BrickSquareType,
-        StingType,
-        TransformBrickType,
-        TransformDestroyType,
-        TransformJokerType,
-        CopyLineType,
-        CopySquareType,
-        CopyPredictionType,
-        TransformBombType,
-        BrickTowerType,
-        PlasmaTriangleType
-    }
-
     private static PuType[] PUTypes =
     {
         PuType.JokerType,
@@ -214,6 +192,12 @@ public class BallFactory
                 return new PlasmaFullTriangleBall();
             case PuType.StingType:
                 return new StingBall();
+            case PuType.StarType:
+                return new StarBall();
+            case PuType.GoldenStarType:
+                return new GoldenStarBall();
+            case PuType.BrickType:
+                return new BrickBall();
             case PuType.BrickTowerType:
                 return new BrickTower();
             default:
@@ -238,6 +222,15 @@ public class BallFactory
         return new NormalBall(Random.Range(1, gs.Level + 1), Random.Range(0, gs.Level));
     }
 
+    public Ball GenerateSavedBall(GameData.BallValue value){
+        if(value.type==PuType.NormalType){
+            return new NormalBall(value.weight,value.material);
+        }
+        else{
+            return generatePUByID(value.type);
+        }
+    }
+
     public void RefreshLevelBall(GameState gs)
     {
         gs.LevelBall = new NormalBall(gs.Level, gs.Level - 1);
@@ -258,3 +251,30 @@ public class BallFactory
         return res;
     }
 }
+
+    public enum PuType
+    {
+        NormalType,
+        JokerType,
+        BombType,
+        ZapHorizontalType,
+        ZapDiagonalType,
+        CutterType,
+        PlasmaNoTriangleType,
+        PlasmaEmptyTriangleType,
+        PlasmaFullTriangleType,
+        GoldenStarType,
+        StarType,
+        BrickSquareType,
+        BrickType,
+        StingType,
+        TransformBrickType,
+        TransformDestroyType,
+        TransformJokerType,
+        CopyLineType,
+        CopySquareType,
+        CopyPredictionType,
+        TransformBombType,
+        BrickTowerType,
+        PlasmaTriangleType
+    }

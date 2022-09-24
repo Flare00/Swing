@@ -44,8 +44,10 @@ public class Game
     {
         _multijoueur = multijoueur;
         _pause = false;
-        _state = new GameState();
-        _zone = new GameZone(_state);
+        SaveManager.instance.LoadGame();
+        //GameData gd = SaveManager.instance.gameData;
+        _state = new GameState(/*gd*/);
+        _zone = new GameZone(_state,/*gd*/);
 
         _state.Name = "Player " + idJoueur + 1;
         this._playerCamera = GameObject.Instantiate(Resources.Load("Prefabs/CameraPlayer", typeof(GameObject))) as GameObject;

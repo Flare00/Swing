@@ -5,6 +5,7 @@ public class JokerBall : SpecialBall
     public JokerBall() : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Joker", typeof(GameObject))) as GameObject;
+        this.type = PuType.JokerType;
     }
 
     public override void Action(GameZone zone, int x, int y)
