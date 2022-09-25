@@ -99,8 +99,8 @@ public class SwingObject
         _weightColRight = 0;
         _deactivated = false;
 
-        _weightObjectLeft.transform.Translate(new Vector3(_positionLeft.x * GameZone.SpacingBall, (_positionLeft.y - 1.1f) * GameZone.SizeBall, -0.1f));
-        _weightObjectRight.transform.Translate(new Vector3(_positionRight.x * GameZone.SpacingBall, (_positionRight.y - 1.1f) * GameZone.SizeBall, -0.1f));
+        _weightObjectLeft.transform.Translate(new Vector3(_positionLeft.x * GameZone.SpacingBall, (positionLeft.y - 1.1f) * GameZone.SizeBall, -0.1f));
+        _weightObjectRight.transform.Translate(new Vector3(_positionRight.x * GameZone.SpacingBall, (positionRight.y - 1.1f) * GameZone.SizeBall, -0.1f));
 
     
         
