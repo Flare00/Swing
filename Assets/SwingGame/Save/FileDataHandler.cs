@@ -63,10 +63,7 @@ public class FileDataHandler
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
             string dataToStore = JsonUtility.ToJson(data, true);
-            //string pred = new JavaScriptSerializer().Serialize(data.predictionZoneBalls);
-            //string play = new JavaScriptSerializer().Serialize(data.playgroundZoneBalls);
-
-            Debug.Log(dataToStore);
+            
 
             if (useEncryption) 
             {
