@@ -164,8 +164,10 @@ public class BallFactory
     {
         switch (puType)
         {
+            /*
             case PuType.RandomType:
                 return new RandomBall();
+            */
             case PuType.BombType:
                 return new BombBall();
             case PuType.JokerType:
@@ -208,12 +210,14 @@ public class BallFactory
                 return new BrickBall();
             case PuType.BrickTowerType:
                 return new BrickTower();
+            /*
             case PuType.TornadoType:
                 return new TornadoBall();
             case PuType.FaintType:
                 return new FaintBall();
             case PuType.BlackoutType:
                 return new BlackoutBall();
+           */
             default:
                 return null;
         }
@@ -281,7 +285,6 @@ public class BallFactory
         // We dont want another random PU at position 0.
         return generatePUByID(PUTypes[Random.Range(1, PUTypes.Length)]);
     }
-}
 }
 
     public enum PuType
