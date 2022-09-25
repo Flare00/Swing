@@ -81,6 +81,8 @@ public class GameState
 
     public void StartGameOver()
     {
+        SaveManager.instance.Disable();
+        SaveManager.instance.GameOver();
         _gameOverComputing = true;
         _gameOverRow = GameZone.HeightPlayGround;
         _timingGameOver = TIMING_BETWEEN_GAMEOVER_ROWS;

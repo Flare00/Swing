@@ -9,13 +9,17 @@ public class FileDataHandler
     private string dataDirPath = "";
     private string dataFileName = "";
     private bool useEncryption = false;
-    private readonly string encryptionCodeWord = "word";
+    private readonly string encryptionCodeWord = "uwu";
 
     public FileDataHandler(string dataDirPath, string dataFileName, bool useEncryption) 
     {
         this.dataDirPath = dataDirPath;
         this.dataFileName = dataFileName;
         this.useEncryption = useEncryption;
+    }
+
+    public bool HasSave(){
+        return(File.Exists(Path.Combine(dataDirPath, dataFileName)));
     }
 
     public GameData Load() 
@@ -52,6 +56,10 @@ public class FileDataHandler
             }
         }
         return loadedData;
+    }
+
+    public void DeleteSave(){
+        File.Delete(Path.Combine(dataDirPath, dataFileName));
     }
 
     public void Save(GameData data) 

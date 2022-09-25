@@ -20,6 +20,7 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
     public GameObject selectGameMode;
     public GameObject buttonBackSelectGameMode;
     public GameObject scoreAnchor;
+    public GameObject loadGamePopup;
 
     private ControlsGame.UIActions _actions;
 
@@ -57,15 +58,38 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
 
     public void Solo()
     {
+        if(SaveManager.instance.HasSave()){
+            selectGameMode.SetActive(false);
+            loadGamePopup.SetActive(true);
+        }
+        else{
+            NewGame();
+        }
+    }
+
+    public void NewGame()
+    {
         CrossSceneData.Multijoueur = false;
         CrossSceneData.Mission = false;
         CrossSceneData.TransitionMainMenu = true;
+        CrossSceneData.LoadGame = false;
         MultiplayerSystem.RemoveInstance();
 
         transitionScript.LoadSceneWithTransition("Game");
         eventSystem.gameObject.SetActive(false);
-
     }
+    public void LoadGame()
+    {
+        CrossSceneData.Multijoueur = false;
+        CrossSceneData.Mission = false;
+        CrossSceneData.TransitionMainMenu = true;
+        CrossSceneData.LoadGame = true;
+        MultiplayerSystem.RemoveInstance();
+
+        transitionScript.LoadSceneWithTransition("Game");
+        eventSystem.gameObject.SetActive(false);
+    }
+
     public void Multi()
     {
         CrossSceneData.Multijoueur = true;

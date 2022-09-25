@@ -12,11 +12,17 @@ public class SaveManager : MonoBehaviour {
     
     private void Awake(){
         if(instance!=null){
-            Debug.LogError("Trying to create a new savemanager");
+            //TODO voir si de multiples manager sont créés
+            //Debug.LogError("Trying to create a new savemanager");
         }
         instance = this;
         fileHandler = new FileDataHandler(Application.persistentDataPath,"savedGame.txt",false);
         NewGame();
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    public bool HasSave(){
+        return fileHandler.HasSave();
     }
 
     public void NewGame(){
@@ -24,7 +30,6 @@ public class SaveManager : MonoBehaviour {
     }
 
     public void LoadGame(){
-        
         gameData = fileHandler.Load();
         if (this.gameData==null){
             Debug.Log("No data found");
@@ -58,6 +63,10 @@ public class SaveManager : MonoBehaviour {
 
         }
 
+    }
+
+    public void GameOver(){
+        fileHandler.DeleteSave();
     }
 
     public void SaveGame(){

@@ -52,7 +52,7 @@ public class SwingLoop : MonoBehaviour
         _games = new Game[_nbPlayer];
         for (int i = 0; i < _nbPlayer; i++)
         {
-            _games[i] = new Game(_multiplayer, aspectMode, i);
+            _games[i] = new Game(_multiplayer, aspectMode, i,CrossSceneData.LoadGame);
         }
         transitionScript.ReverseTransition();
     }

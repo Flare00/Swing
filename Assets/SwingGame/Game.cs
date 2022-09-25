@@ -40,7 +40,7 @@ public class Game
     private bool _initInUpdate = true;
     private double _playTime = 0.0;
 
-    public Game(bool multijoueur, int aspectMode, int idJoueur = 0)
+    public Game(bool multijoueur, int aspectMode, int idJoueur = 0, bool loadGame = false)
     {
         _multijoueur = multijoueur;
         if(multijoueur){
@@ -51,10 +51,17 @@ public class Game
             SaveManager.instance.LoadGame();
         }
         _pause = false;
-        _state = new GameState();
-        _state.Multiplayer = multijoueur;
-        _state.PlayerNumber = idJoueur;
-        _zone = new GameZone(_state);
+        if(loadGame){
+            GameData gd = SaveManager.instance.gameData;
+            _state = new GameState(gd);
+            _zone = new GameZone(_state,gd);
+        }
+        else{
+            _state = new GameState();
+            _state.Multiplayer = multijoueur;
+            _state.PlayerNumber = idJoueur;
+            _zone = new GameZone(_state);
+        }
 
         _state.Name = "Player " + idJoueur + 1;
         this._playerCamera = GameObject.Instantiate(Resources.Load("Prefabs/CameraPlayer", typeof(GameObject))) as GameObject;

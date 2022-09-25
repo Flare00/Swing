@@ -8,4 +8,5 @@ public static class CrossSceneData
     public static bool Multijoueur { get; set; }
     public static bool Mission { get; set; }
     public static bool TransitionMainMenu { get => _transitionMainMenu;  set => _transitionMainMenu = value; }
+    public static bool LoadGame { get ;  set; }
 }
