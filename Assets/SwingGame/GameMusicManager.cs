@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GameMusicManager : MonoBehaviour
@@ -27,7 +26,7 @@ public class GameMusicManager : MonoBehaviour
     private void Update()
     {
         if (!audioSource.isPlaying && !isStopByPlayer)
-            next();
+            Next();
     }
 
     public void Play()
@@ -56,7 +55,7 @@ public class GameMusicManager : MonoBehaviour
             isStopByPlayer = true;
         }
     }
-    public void next()
+    public void Next()
     {
         index++;
         if (index == musicList.Length)
@@ -68,7 +67,7 @@ public class GameMusicManager : MonoBehaviour
         Play();
     }
 
-    public void previous()
+    public void Previous()
     {
         index--;
         if (index < 0)
@@ -76,6 +75,15 @@ public class GameMusicManager : MonoBehaviour
         if (audioSource != null)
         {
             this.audioSource.clip = musicList[index];
+        }
+        Play();
+    }
+    public void NextRandom()
+    {
+        if (audioSource != null)
+        {
+            this.index = Random.Range(0, (musicList.Length - 1));
+            this.audioSource.clip = musicList[this.index];
         }
         Play();
     }

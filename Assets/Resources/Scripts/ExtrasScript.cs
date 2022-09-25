@@ -109,10 +109,10 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                         ball = new TornadoBall(false);
                         break;
                     case 23:
-                        ball = new JokerBall(false); // TODO
+                        ball = new FaintBall(false);
                         break;
                     case 24:
-                        ball = new JokerBall(false); // TODO
+                        ball = new BlackoutBall(false);
                         break;
                     case 25:
                         ball = new RandomBall(false);
@@ -330,16 +330,16 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
             case 23:
                 // ?
                 videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
-                header = new LocalizedString("PowerUp", "joker_h");
-                content = new LocalizedString("PowerUp", "joker_c");
+                header = new LocalizedString("PowerUp", "faint_h");
+                content = new LocalizedString("PowerUp", "faint_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
                 textContent.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = content.GetLocalizedString();
                 break;
             case 24:
                 // ?
                 videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
-                header = new LocalizedString("PowerUp", "joker_h");
-                content = new LocalizedString("PowerUp", "joker_c");
+                header = new LocalizedString("PowerUp", "blackout_h");
+                content = new LocalizedString("PowerUp", "blackout_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
                 textContent.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = content.GetLocalizedString();
                 break;

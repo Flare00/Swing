@@ -199,6 +199,22 @@ MonoBehaviour:
     m_Key: random_c
     m_Metadata:
       m_Items: []
+  - m_Id: 2323649313165312
+    m_Key: faint_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2323650818920448
+    m_Key: faint_c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2323652630859776
+    m_Key: blackout_h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2323653243228160
+    m_Key: blackout_c
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

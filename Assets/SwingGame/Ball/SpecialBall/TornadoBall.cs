@@ -20,14 +20,14 @@ public class TornadoBall : SpecialBall
     public override void Action(GameZone zone, int x, int y)
     {
         // Add effect (ParticleSystem)
-        // zone.AddEffect(new Effect(Effect.EffectType.ZapHorizontal, this.BallObject.transform.position)); 
+        zone.AddEffect(new Effect(Effect.EffectType.ZapDiagonal, this.BallObject.transform.position - new Vector3(0,y,0))); 
         // Changer la position pour faire en sorte qu'elle soit a 0
 
         zone.SetDeactivateSwingAtCol(x, true);
 
         // Make everyball of the column fly
         bool hasBall = true;
-        for (int i = y - 1; i > 0 && hasBall; i--)
+        for (int i = y - 1; i >= 0 && hasBall; i--)
         {
             if (zone.Playground[i][x].HasBall())
             {

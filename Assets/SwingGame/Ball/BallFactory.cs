@@ -50,7 +50,10 @@ public class BallFactory
         CopyPredictionType,
         TransformBombType,
         BrickTowerType,
-        PlasmaTriangleType
+        PlasmaTriangleType,
+        TornadoType,
+        FaintType,
+        BlackoutType
     }
 
     private static PuType[] PUTypes =
@@ -73,7 +76,10 @@ public class BallFactory
         PuType.CopyPredictionType,
         PuType.TransformBombType,
         PuType.BrickTowerType,
-        PuType.PlasmaTriangleType
+        PuType.PlasmaTriangleType,
+        // PuType.TornadoType,
+        // PuType.FaintType,
+        // PuType.BlackoutType
     };
 
     private static Dictionary<PuType, float[]> PROBABILITY_PU = new Dictionary<PuType, float[]>
@@ -97,6 +103,9 @@ public class BallFactory
         {PuType.TransformBombType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0.1f, 0.1f}},
         {PuType.BrickTowerType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0.09f}},
         {PuType.PlasmaTriangleType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1f}},
+        // {PuType.TornadoType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1f}},
+        // {PuType.FaintType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1f}},
+        // {PuType.BlackoutType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1f}}
     };
 
 
@@ -127,7 +136,6 @@ public class BallFactory
 
         return BEARINGS_LEVEL.Length;
     }
-
 
     public void RefreshPu(GameState gs)
     {
@@ -178,7 +186,6 @@ public class BallFactory
 
         return generatePUByID(lastPuType);
     }
-
     private SpecialBall generatePUByID(PuType puType)
     {
         switch (puType)
@@ -221,6 +228,12 @@ public class BallFactory
                 return new StingBall();
             case PuType.BrickTowerType:
                 return new BrickTower();
+            case PuType.TornadoType:
+                return new TornadoBall();
+            case PuType.FaintType:
+                return new FaintBall();
+            case PuType.BlackoutType:
+                return new BlackoutBall();
             default:
                 return null;
         }
