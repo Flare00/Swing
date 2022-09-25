@@ -61,8 +61,8 @@ public class SaveManager : MonoBehaviour {
     }
 
     public void SaveGame(){
-        fileHandler.Save(gameData);
-
+        if(_enabled)
+            fileHandler.Save(gameData);
     }
 
     private void OnApplicationQuit(){
