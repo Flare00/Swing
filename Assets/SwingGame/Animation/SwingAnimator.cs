@@ -105,6 +105,7 @@ public class SwingAnimator : Animator, IMultiplayerInterface
         return _dropingBallByCol[index];
     }
 
+
     public bool Animate(float deltaT)
     {
         bool gameOver = false;
@@ -450,5 +451,12 @@ public class SwingAnimator : Animator, IMultiplayerInterface
     public int PlayerId()
     {
         return this._gameZone.GameState.PlayerNumber;
+    }
+    
+    public bool HasFlyingBall(){
+        for(int i=0;i<GameZone.LengthPlayGround;i++)
+            if(_dropingBallByCol[i]!=0)
+                return true;
+        return false;
     }
 }

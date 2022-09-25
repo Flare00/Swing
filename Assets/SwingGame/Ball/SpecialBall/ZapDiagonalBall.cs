@@ -15,6 +15,7 @@ public class ZapDiagonalBall : SpecialBall
         {
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
         }
+         this.type = PuType.ZapDiagonalType;
     }
 
     public override void Action(GameZone zone, int x, int y)

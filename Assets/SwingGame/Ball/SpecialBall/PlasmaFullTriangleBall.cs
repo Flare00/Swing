@@ -14,6 +14,7 @@ public class PlasmaFullTriangleBall : SpecialBall
         {
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
         }
+        this.type = PuType.PlasmaFullTriangleType;
     }
 
     public override void Action(GameZone zone, int x, int y)

@@ -14,6 +14,8 @@ public class CopySquareBall : SpecialBall
         {
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
         }
+        
+        this.type = PuType.CopySquareType;
     }
 
     public override void Action(GameZone zone, int x, int y)

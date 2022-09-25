@@ -14,6 +14,7 @@ public class CutterBall : SpecialBall
         {
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
         }
+        this.type = PuType.CutterType;
     }
 
     public override void Action(GameZone zone, int x, int y)

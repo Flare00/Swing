@@ -15,6 +15,7 @@ public class TransformDestroyBall : SpecialBall
         {
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
         }
+         this.type = PuType.TransformDestroyType;
     }
 
     public override void Action(GameZone zone, int x, int y)

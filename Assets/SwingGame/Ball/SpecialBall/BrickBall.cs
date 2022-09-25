@@ -13,6 +13,7 @@ public class BrickBall : SpecialBall
         {
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
         }
+        this.type = PuType.BrickType;
     }
 
     public override void Action(GameZone zone, int x, int y) { /* No Action By Default */ }

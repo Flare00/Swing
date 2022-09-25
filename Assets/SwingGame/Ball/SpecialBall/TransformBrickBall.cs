@@ -14,6 +14,7 @@ public class TransformBrickBall : SpecialBall
         {
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
         }
+        this.type = PuType.TransformBrickType;
     }
 
     public override void Action(GameZone zone, int x, int y)

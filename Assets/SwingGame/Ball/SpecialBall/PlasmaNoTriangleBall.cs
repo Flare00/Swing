@@ -14,6 +14,7 @@ public class PlasmaNoTriangleBall : SpecialBall
         {
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
         }
+        this.type = PuType.PlasmaNoTriangleType;
     }
 
     public override void Action(GameZone zone, int x, int y)

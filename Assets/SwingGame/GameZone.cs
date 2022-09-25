@@ -20,6 +20,7 @@ public class GameZone
     public const float SpacingPlayerPlayground = 0.1f;
     public const float SpacingFlyingBallPlayground = SpacingPlayerPlayground - SizeBall / 2;
     public const float DistanceExitFlying = 3f * SpacingBall;
+    public const int WaitBetweenSaveTime = 30;
 
     private struct MultiplicatorLightPlayground
     {
@@ -47,6 +48,7 @@ public class GameZone
     private GameObject _anchorFlyLeft, _anchorFlyRight;
 
     private MultiplicatorLightPlayground _multiplicatorLightPlayground;
+    private int _saveDelay = 0;
 
     public GameObject ZoneGlobal {get => _zoneGlobal;}
 
@@ -140,6 +142,100 @@ public class GameZone
 
         _zoneGlobal.transform.Translate((-LengthPlayGround * SpacingBall / 2.0f) + 0.25f, 7, 0);
     }
+
+    public GameZone(GameState gs, GameData gd)
+    {
+        _gameState = gs;
+        //Init Unity Zone
+        _zoneGlobal = new GameObject("Player1");
+        _zonePrediction = new GameObject("PredictionZone");
+        _zonePlayground = new GameObject("PlayGroundZone");
+        _zonePlayer = new GameObject("PlayerZone");
+        _zoneSwings = new GameObject("SwingsZone");
+
+        _zonePrediction.transform.parent = _zoneGlobal.transform;
+        _zonePlayground.transform.parent = _zoneGlobal.transform;
+        _zonePlayer.transform.parent = _zoneGlobal.transform;
+        _zoneSwings.transform.parent = _zoneGlobal.transform;
+
+        GameObject decor = GameObject.Instantiate(Resources.Load("Prefabs/Decor", typeof(GameObject))) as GameObject;
+        _multiplicatorLightPlayground.level2_Left =
+            decor.transform.Find("Light_Mul2").Find("Left").GetComponent<Renderer>().material;
+        _multiplicatorLightPlayground.level2_Right =
+            decor.transform.Find("Light_Mul2").Find("Right").GetComponent<Renderer>().material;
+        _multiplicatorLightPlayground.level3_Left =
+            decor.transform.Find("Light_Mul3").Find("Left").GetComponent<Renderer>().material;
+        _multiplicatorLightPlayground.level3_Right =
+            decor.transform.Find("Light_Mul3").Find("Right").GetComponent<Renderer>().material;
+        _multiplicatorLightPlayground.level4_Left =
+            decor.transform.Find("Light_Mul4").Find("Left").GetComponent<Renderer>().material;
+        _multiplicatorLightPlayground.level4_Right =
+            decor.transform.Find("Light_Mul4").Find("Right").GetComponent<Renderer>().material;
+        decor.transform.parent = _zoneGlobal.transform;
+
+        _listEffect = new List<Effect>();
+
+        //Init Player
+        _player = new Player(_gameState);
+        _player.ContainerObject.transform.parent = _zonePlayer.transform;
+        _anchorFlyLeft = new GameObject("anchorSwingLeft");
+        _anchorFlyLeft.transform.parent = _zonePlayer.transform;
+        _anchorFlyLeft.transform.position = new Vector3(-DistanceExitFlying, 0, 0);
+        _anchorFlyRight = new GameObject("anchorSwingRight");
+        _anchorFlyRight.transform.parent = _zonePlayer.transform;
+        _anchorFlyRight.transform.position =
+            new Vector3((((NbSwings * 2) - 1) * SpacingBall) + DistanceExitFlying, 0, 0);
+
+
+        //Init Prediction Tab
+        _prediction = new FixedBallContainer[HeightPrediction][];
+        for (int i = 0; i < HeightPrediction; i++)
+        {
+            _prediction[i] = new FixedBallContainer[LengthPlayGround];
+            for (int j = 0; j < LengthPlayGround; j++)
+            {
+                _prediction[i][j] = new FixedBallContainer(new Vector3(j * SpacingBall, i),
+                    BallFactory.getInstance().GenerateSavedBall(gd.predictionZoneBalls[i].getValue(j)));
+                _prediction[i][j].ContainerObject.transform.parent = _zonePrediction.transform;
+            }
+        }
+
+
+        //Init Playground Tab
+        _playground = new FixedBallContainer[HeightPlayGround][];
+        for (int i = 0; i < HeightPlayGround; i++)
+        {
+            _playground[i] = new FixedBallContainer[LengthPlayGround];
+            for (int j = 0; j < LengthPlayGround; j++)
+            {
+                if(gd.playgroundZoneBalls[i].getValue(j).weight == -1)
+                    _playground[i][j] = new FixedBallContainer(new Vector3(j * SpacingBall, i));
+                else
+                    _playground[i][j] = new FixedBallContainer(new Vector3(j * SpacingBall, i),
+                        BallFactory.getInstance().GenerateSavedBall(gd.playgroundZoneBalls[i].getValue(j)));
+                _playground[i][j].ContainerObject.transform.parent = _zonePlayground.transform;
+            }
+        }
+
+
+        //Init Swing Objects
+        _swings = new SwingObject[NbSwings];
+        for (int i = 0; i < NbSwings; i++)
+        {
+            _swings[i] = new SwingObject(new Vector2Int(2 * i, 1), _zoneSwings.transform,gd.swingState[i]);
+        }
+
+        //Init Animator
+        _animator = new SwingAnimator(this, _swings);
+
+        _zonePrediction.transform.Translate(0.5f, -HeightPrediction, 0);
+        _zonePlayer.transform.Translate(0.5f, -HeightPrediction - SizeBall - SpacingPredictionPlayer, 0);
+        _zonePlayground.transform.Translate(0.5f, -HeightPrediction - RealHeightPlayGround - SpacingPredictionPlayer - SpacingPlayerPlayground - (2 * SizeBall), 0);
+        _zoneSwings.transform.Translate(0.5f, -HeightPrediction - HeightPlayGround - SpacingPredictionPlayer - SpacingPlayerPlayground - (2 * SizeBall), 0);
+
+        _zoneGlobal.transform.Translate((-LengthPlayGround * SpacingBall / 2.0f) + 0.25f, 7, 0);
+    }
+
 
     public void UpdateMultiplicatorLight()
     {
@@ -302,6 +398,11 @@ public class GameZone
         set => _playground = value;
     }
 
+    public SwingObject[] Swings
+    {
+        get => _swings;
+    }
+
     public FixedBallContainer[][] Prediction
     {
         get => _prediction;
@@ -385,9 +486,13 @@ public class GameZone
             //Explode the GameZone
             if (_gameState.UpdateGameOver(deltaT)) ExplodeStepGameZone();
         }
-
+        if(!_animator.HasFlyingBall()&&_saveDelay<=0){
+            SaveManager.instance.UpdateData(this,_gameState);
+            _saveDelay = WaitBetweenSaveTime;
+        }
         //Update all the VFXs
         UpdateEffect();
+        _saveDelay--;
     }
 
     private bool IsLastRowEmpty()

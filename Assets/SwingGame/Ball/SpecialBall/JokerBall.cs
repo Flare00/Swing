@@ -14,6 +14,7 @@ public class JokerBall : SpecialBall
         {
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
         }
+        this.type = PuType.JokerType;
     }
 
     public override void Action(GameZone zone, int x, int y)

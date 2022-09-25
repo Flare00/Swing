@@ -43,6 +43,13 @@ public class Game
     public Game(bool multijoueur, int aspectMode, int idJoueur = 0)
     {
         _multijoueur = multijoueur;
+        if(multijoueur){
+            SaveManager.instance.Disable();
+        }
+        else{
+            SaveManager.instance.Enable();
+            SaveManager.instance.LoadGame();
+        }
         _pause = false;
         _state = new GameState();
         _state.Multiplayer = multijoueur;

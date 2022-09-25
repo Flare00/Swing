@@ -15,6 +15,7 @@ public class BombBall : SpecialBall
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
         }
         _exploded = false;
+        this.type = PuType.BombType;
     }
 
 

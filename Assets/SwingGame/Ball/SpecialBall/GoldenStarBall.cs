@@ -17,6 +17,7 @@ public class GoldenStarBall : SpecialBall
         {
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
         }
+        this.type = PuType.GoldenStarType;
     }
 
     public override void Action(GameZone zone, int x, int y)

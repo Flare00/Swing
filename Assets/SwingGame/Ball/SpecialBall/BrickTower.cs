@@ -15,6 +15,7 @@ public class BrickTower : SpecialBall
         {
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
         }
+        this.type = PuType.BrickTowerType;
     }
 
     public override void Action(GameZone zone, int x, int y)
