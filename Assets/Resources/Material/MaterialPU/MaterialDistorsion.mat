@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MaterialDistorsion
-  m_Shader: {fileID: -6465566751694194690, guid: fac02fc0a8a77694f8df3af9c17fd5ea, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: d05375308e0f1484e82fabaecf7a1260, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -38,5 +38,5 @@ Material:
     - NoiseSpeed_: 0.2
     - TwirlSpeed_: 1
     m_Colors:
-    - FresnelColor_: {r: 0.3066038, g: 1, b: 0.6792057, a: 0}
+    - FresnelColor_: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
