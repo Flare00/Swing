@@ -115,6 +115,7 @@ public class BallFactory
     {
         int bearingIndex = getBearingIndex(gs);
         int counterPu;
+
         if (bearingIndex == BEARINGS_LEVEL.Length)
         {
             float multCompute = (gs.Multiplicator - GameState.MULTIPLICATOR_MIN) /
@@ -314,8 +315,9 @@ public enum PuType
     CopyPredictionType,
     TransformBombType,
     BrickTowerType,
-    PlasmaTriangleType
-    // TornadoType,
-    // FaintType,
-    // BlackoutType
+    PlasmaTriangleType,
+    RandomType,
+    TornadoType,
+    FaintType,
+    BlackoutType
 }

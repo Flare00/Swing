@@ -6,6 +6,7 @@ public class RandomBall : SpecialBall
     public RandomBall(bool tooltip = true) : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Random", typeof(GameObject))) as GameObject;
+        this.type = PuType.RandomType;
 
         LocalizedString header = new LocalizedString("PowerUp", "random_h");
         LocalizedString content = new LocalizedString("PowerUp", "random_c");

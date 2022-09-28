@@ -7,6 +7,7 @@ public class TornadoBall : SpecialBall
     public TornadoBall(bool tooltip = true) : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Tornado", typeof(GameObject))) as GameObject;
+        this.type = PuType.TornadoType;
 
         LocalizedString header = new LocalizedString("PowerUp", "tornado_h");
         LocalizedString content = new LocalizedString("PowerUp", "tornado_c");
