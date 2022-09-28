@@ -240,11 +240,14 @@ public class BallFactory
         return new NormalBall(Random.Range(1, gs.Level + 1), Random.Range(0, gs.Level));
     }
 
-    public Ball GenerateSavedBall(GameData.BallValue value){
-        if(value.type==PuType.NormalType){
-            return new NormalBall(value.weight,value.material);
+    public Ball GenerateSavedBall(GameData.BallValue value)
+    {
+        if (value.type == PuType.NormalType)
+        {
+            return new NormalBall(value.weight, value.material);
         }
-        else{
+        else
+        {
             return generatePUByID(value.type);
         }
     }
@@ -287,29 +290,32 @@ public class BallFactory
     }
 }
 
-    public enum PuType
-    {
-        NormalType,
-        JokerType,
-        BombType,
-        ZapHorizontalType,
-        ZapDiagonalType,
-        CutterType,
-        PlasmaNoTriangleType,
-        PlasmaEmptyTriangleType,
-        PlasmaFullTriangleType,
-        GoldenStarType,
-        StarType,
-        BrickSquareType,
-        BrickType,
-        StingType,
-        TransformBrickType,
-        TransformDestroyType,
-        TransformJokerType,
-        CopyLineType,
-        CopySquareType,
-        CopyPredictionType,
-        TransformBombType,
-        BrickTowerType,
-        PlasmaTriangleType
-    }
+public enum PuType
+{
+    NormalType,
+    JokerType,
+    BombType,
+    ZapHorizontalType,
+    ZapDiagonalType,
+    CutterType,
+    PlasmaNoTriangleType,
+    PlasmaEmptyTriangleType,
+    PlasmaFullTriangleType,
+    GoldenStarType,
+    StarType,
+    BrickSquareType,
+    BrickType,
+    StingType,
+    TransformBrickType,
+    TransformDestroyType,
+    TransformJokerType,
+    CopyLineType,
+    CopySquareType,
+    CopyPredictionType,
+    TransformBombType,
+    BrickTowerType,
+    PlasmaTriangleType
+    // TornadoType,
+    // FaintType,
+    // BlackoutType
+}

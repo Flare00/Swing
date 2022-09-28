@@ -38,5 +38,5 @@ Material:
     - NoiseSpeed_: 0.2
     - TwirlSpeed_: 1
     m_Colors:
-    - FresnelColor_: {r: 0, g: 0, b: 0, a: 0}
+    - FresnelColor_: {r: 0.30588236, g: 1, b: 0.6784314, a: 0}
   m_BuildTextureStacks: []
