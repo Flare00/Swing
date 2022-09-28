@@ -17,6 +17,7 @@ public class NormalBall : Ball
 
         SelectWeight(weight);
         SelectMaterial(idMaterial);
+        _isHide = false;
     }
 
     public override void Action(GameZone zone, int x, int y)
@@ -104,16 +105,22 @@ public class NormalBall : Ball
 
     public override void SetHideBall(bool hide)
     {
-        Renderer r = this.BallObject.GetComponent<Renderer>();
-        if (hide)
+        if (_isHide != hide)
         {
-            SelectMaterial(-1);
-            SelectWeight(0);
+            Renderer r = this.BallObject.GetComponent<Renderer>();
+            if (hide)
+            {
+                SelectMaterial(-1);
+                SelectWeight(0);
+                _isHide = true;
+            }
+            else
+            {
+                SelectMaterial(_idMaterial);
+                SelectWeight(_weight);
+                _isHide = false;
+            }
         }
-        else
-        {
-            SelectMaterial(_idMaterial);
-            SelectWeight(_weight);
-        }
+
     }
 }

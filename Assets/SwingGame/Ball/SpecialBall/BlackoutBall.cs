@@ -27,15 +27,38 @@ public class BlackoutBall : SpecialBall
 
     public override void Action(GameZone zone, int x, int y)
     {
+        // Play Animation
         if (!_animPlayed)
         {
             playAnimation();
         }
         
+        // Blackout
+        for (int i = 0; i < GameZone.LengthPlayGround; i++)
+        {
+            for (int j = 0; j < GameZone.HeightPlayGround; j++)
+            {
+                if (zone.Playground[j][i].HasBall())
+                {
+                    zone.Playground[j][i].Ball.SetHideBall(true);
+                }
+            }
+        }
 
-
+        // Check if animation played
         if (this._animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && !_firstPass)
         {
+            // Unhide balls
+            for (int i = 0; i < GameZone.LengthPlayGround; i++)
+            {
+                for (int j = 0; j < GameZone.HeightPlayGround; j++)
+                {
+                    if (zone.Playground[j][i].HasBall())
+                    {
+                        zone.Playground[j][i].Ball.SetHideBall(false);
+                    }
+                }
+            }
             // Remove PU
             zone.Playground[y][x].ExplodeBall(zone, Effect.EffectType.BallSmoke);
         }

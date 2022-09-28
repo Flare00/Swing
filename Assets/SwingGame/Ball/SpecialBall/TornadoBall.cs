@@ -28,6 +28,7 @@ public class TornadoBall : SpecialBall
 
         // Make everyball of the column fly
         bool hasBall = true;
+        bool dir = true;
         for (int i = y - 1; i >= 0 && hasBall; i--)
         {
             if (zone.Playground[i][x].HasBall())
@@ -35,7 +36,8 @@ public class TornadoBall : SpecialBall
                 Ball b = zone.Playground[i][x].PopBall();
                 zone.Animator.AddFlyingBall(b, GameZone.HeightPlayGround - i, Random.Range(8, 24),
                         new Vector2Int(x, i),
-                        Random.value > 0.5 ? SwingAnimator.Direction.DirectionLeft : SwingAnimator.Direction.DirectionRight);
+                        dir ? SwingAnimator.Direction.DirectionLeft : SwingAnimator.Direction.DirectionRight);
+                dir = !dir;
             }
             else
             {

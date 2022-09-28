@@ -32,7 +32,7 @@ public class BallFactory
 
     private static PuType[] PUTypes =
     {
-        // PuType.RandomType,
+        // PuType.RandomType,           // DO NOT MOVE RANDOMTYPE FROM POSITION 0!
         PuType.JokerType,
         PuType.BombType,
         PuType.ZapHorizontalType,
@@ -160,7 +160,7 @@ public class BallFactory
         }
         */
 
-        return new FaintBall();
+        return new BlackoutBall();
         // return generatePUByID(lastPuType);
     }
     private SpecialBall generatePUByID(PuType puType)
