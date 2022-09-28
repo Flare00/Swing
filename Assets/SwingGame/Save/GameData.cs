@@ -15,6 +15,11 @@ public class GameData: ISerializationCallbackReceiver{
             weight=-1;
             material=0;
         }
+        public BallValue(int w,int m, PuType t){
+            weight=w;
+            material=m;
+            type = t;
+        }
     }
 
     [System.Serializable]
@@ -71,6 +76,8 @@ public class GameData: ISerializationCallbackReceiver{
     public int nbBallDrop;
     public float time;
     public int[] swingState;
+    public BallValue playerHand;
+    public int playerPos;
 
     public GameData(){
         //Debug.Log(typeof(NormalBall).IsSerializable);

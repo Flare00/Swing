@@ -46,6 +46,10 @@ public class SaveManager : MonoBehaviour {
             this.gameData.nbBallDrop = gs.NbBallDrop;
             this.gameData.countPowerUp = gs.CountPowerUp;
             this.gameData.time = gs.Time;
+            if(gz.Player.HasBall()){
+                this.gameData.playerHand = new GameData.BallValue(gz.Player.Ball.Weight,gz.Player.Ball.IdMaterial,gz.Player.Ball.Type);
+            }
+            this.gameData.playerPos = gz.Player.Position;
             
             for(int i=0;i<GameZone.HeightPlayGround;i++){
                 for(int j=0;j<GameZone.LengthPlayGround;j++){

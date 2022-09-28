@@ -143,6 +143,18 @@ MonoBehaviour:
     m_Key: versus
     m_Metadata:
       m_Items: []
+  - m_Id: 58038099691048960
+    m_Key: save_detected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58038373889478656
+    m_Key: yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58038609278013440
+    m_Key: no
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

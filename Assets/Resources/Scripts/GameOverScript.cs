@@ -160,6 +160,7 @@ public class GameOverScript : MonoBehaviour, IAskNameListener, ILeaderboardChang
 
     public void RestartAction()
     {
+        CrossSceneData.LoadGame = false;
         transitionScript.LoadSceneWithTransition("Game");
     }
 

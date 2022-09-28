@@ -146,5 +146,17 @@ MonoBehaviour:
     m_Localized: Duel
     m_Metadata:
       m_Items: []
+  - m_Id: 58038099691048960
+    m_Localized: "Une sauvegarde a \xE9t\xE9 d\xE9tect\xE9e, voulez vous la charger? "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58038373889478656
+    m_Localized: Oui
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58038609278013440
+    m_Localized: Non
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

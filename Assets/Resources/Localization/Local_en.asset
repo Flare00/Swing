@@ -146,5 +146,17 @@ MonoBehaviour:
     m_Localized: Versus
     m_Metadata:
       m_Items: []
+  - m_Id: 58038099691048960
+    m_Localized: A save has been detected, do you want to load it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58038373889478656
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58038609278013440
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
