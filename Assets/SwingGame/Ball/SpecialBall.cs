@@ -16,4 +16,7 @@ public abstract class SpecialBall : Ball
         tt.header = header;
         tt.content = content;
     }
+    public override void SetHideBall(bool hide)
+    {
+    }
 }

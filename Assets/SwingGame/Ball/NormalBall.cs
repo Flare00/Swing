@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NormalBall : Ball
 {
+    private bool _isHide;
     public NormalBall(int weight, int idMaterial = 0) : base(weight, idMaterial)
     {
         this.type = PuType.NormalType;
@@ -14,7 +15,23 @@ public class NormalBall : Ball
         audioSource.clip = Resources.Load("../") as AudioClip;
         audioSource.Play();
 
-        //this._ballObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        SelectWeight(weight);
+        SelectMaterial(idMaterial);
+    }
+
+    public override void Action(GameZone zone, int x, int y)
+    {
+    }
+
+
+
+    public override object Clone()
+    {
+        return new NormalBall(this.Weight, this.IdMaterial);
+    }
+
+    private void SelectWeight(int weight)
+    {
         GameObject text = this.BallObject.transform.GetChild(0).gameObject;
         if (weight > 0)
         {
@@ -24,7 +41,10 @@ public class NormalBall : Ball
         {
             text.GetComponent<TMPro.TextMeshPro>().text = "";
         }
+    }
 
+    private void SelectMaterial(int idMaterial)
+    {
         Renderer r = this.BallObject.GetComponent<Renderer>();
 
         int select = idMaterial;
@@ -63,7 +83,7 @@ public class NormalBall : Ball
             r.material = Resources.Load("Material/MaterialBaseColor/MaterialBall", typeof(Material)) as Material;
             select = -1;
         }
-       
+
         switch (select)
         {
             case 0: r.material.color = Color.blue; break;
@@ -82,12 +102,18 @@ public class NormalBall : Ball
         }
     }
 
-    public override void Action(GameZone zone, int x, int y)
+    public override void SetHideBall(bool hide)
     {
-    }
-
-    public override object Clone()
-    {
-        return new NormalBall(this.Weight, this.IdMaterial);
+        Renderer r = this.BallObject.GetComponent<Renderer>();
+        if (hide)
+        {
+            SelectMaterial(-1);
+            SelectWeight(0);
+        }
+        else
+        {
+            SelectMaterial(_idMaterial);
+            SelectWeight(_weight);
+        }
     }
 }

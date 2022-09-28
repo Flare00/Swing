@@ -32,13 +32,14 @@ public class BlackoutBall : SpecialBall
             playAnimation();
         }
         
+
+
         if (this._animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && !_firstPass)
         {
             // Remove PU
             zone.Playground[y][x].ExplodeBall(zone, Effect.EffectType.BallSmoke);
         }
         _firstPass = false;
-
     }
 
     public void playAnimation()

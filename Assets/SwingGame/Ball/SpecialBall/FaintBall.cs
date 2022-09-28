@@ -19,6 +19,10 @@ public class FaintBall : SpecialBall
 
     public override void Action(GameZone zone, int x, int y)
     {
+        // garder une mat 3x3 
+        // si les balls sont diff ? si oui => dehide la case précendente si existante 
+                                        // => hide nouvelle balle dans la mat 3x3
+                                        // => sinon fait rien
     }
 
     public override object Clone()

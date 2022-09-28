@@ -212,19 +212,20 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2323649313165312
-    m_Localized: TODO
+    m_Localized: The Faint
     m_Metadata:
       m_Items: []
   - m_Id: 2323650818920448
-    m_Localized: TODO
+    m_Localized: "Hides the color of all balls within a 3 by 3 radius with a black
+      color.\r"
     m_Metadata:
       m_Items: []
   - m_Id: 2323652630859776
-    m_Localized: TODO
+    m_Localized: The Blackout
     m_Metadata:
       m_Items: []
   - m_Id: 2323653243228160
-    m_Localized: TODO
+    m_Localized: "Hides the color of ALL balls with a black color.\r"
     m_Metadata:
       m_Items: []
   references:

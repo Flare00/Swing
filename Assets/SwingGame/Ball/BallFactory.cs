@@ -114,8 +114,8 @@ public class BallFactory
     public void RefreshPu(GameState gs)
     {
         int bearingIndex = getBearingIndex(gs);
-        int counterPu;
-
+        int counterPu = 10;
+        /*
         if (bearingIndex == BEARINGS_LEVEL.Length)
         {
             float multCompute = (gs.Multiplicator - GameState.MULTIPLICATOR_MIN) /
@@ -131,7 +131,7 @@ public class BallFactory
         {
             counterPu = COUNTER_PU[bearingIndex] + GameState.MULTIPLICATOR_MAX - gs.Multiplicator;
         }
-
+        */
         gs.NextPu = GeneratePu(gs);
         gs.CountPowerUp =
             GameState.BALL_BY_LEVEL - gs.NbBallDrop % GameState.BALL_BY_LEVEL == counterPu % GameState.BALL_BY_LEVEL
@@ -143,7 +143,7 @@ public class BallFactory
     {
         float randProbability = Random.Range(0, Int32.MaxValue) / (float)Int32.MaxValue;
         float countProbability = 0;
-
+        /*
         Array puENum = Enum.GetValues(typeof(PuType));
         PuType lastPuType = PUTypes[0];
         foreach (int i in puENum)
@@ -158,8 +158,10 @@ public class BallFactory
                 return generatePUByID(PUTypes[i]);
             }
         }
+        */
 
-        return generatePUByID(lastPuType);
+        return new FaintBall();
+        // return generatePUByID(lastPuType);
     }
     private SpecialBall generatePUByID(PuType puType)
     {

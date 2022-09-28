@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Ball : ICloneable
 {
-    private int _weight;
-    private int _idMaterial;
+    protected int _weight;
+    protected int _idMaterial;
     private bool _isNormalBall;
     protected PuType type;
 
@@ -64,6 +64,7 @@ public abstract class Ball : ICloneable
         get=> type;
     }
 
+    abstract public void SetHideBall(bool hide);
     abstract public void Action(GameZone zone, int x, int y);
     public abstract object Clone();
 }
