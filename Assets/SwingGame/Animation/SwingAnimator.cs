@@ -5,7 +5,7 @@ using SwingGame.Media;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
-public class SwingAnimator : Animator, IMultiplayerInterface
+public class SwingAnimator : Animator
 {
     //speed
     public const float VerticalSpeed = 25.0f;
@@ -234,7 +234,7 @@ public class SwingAnimator : Animator, IMultiplayerInterface
                 floatingBall.ContainerObject.transform.Translate(-_gameZone.ZoneGlobal.transform.position.x, 0, 0);
                 //create data to send
                 MultiplayerData data = new MultiplayerData();
-                data.Sender = this;
+                data.Sender = this._gameZone;
                 data.Data = floatingBall;
                 //Remove the floating ball containers from this player
                 this._floatingBallsContainers.Remove(floatingBall);
@@ -453,10 +453,6 @@ public class SwingAnimator : Animator, IMultiplayerInterface
         this._floatingBallsContainers.Add(data.Data);
     }
 
-    public int PlayerId()
-    {
-        return this._gameZone.GameState.PlayerNumber;
-    }
     
     public bool HasFlyingBall(){
         for(int i=0;i<GameZone.LengthPlayGround;i++)

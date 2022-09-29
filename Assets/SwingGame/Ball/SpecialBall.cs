@@ -22,4 +22,7 @@ public abstract class SpecialBall : Ball
     public override void ActionOnSwing(GameZone zone, int x, int y)
     {
     }
+    public override void ActionOnDestroy()
+    {
+    }
 }

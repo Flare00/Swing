@@ -6,7 +6,7 @@ public class BlackoutBall : SpecialBall
     private Animator _animator;
     private bool _animPlayed;
     private bool _firstPass;
-
+    private GameZone _zone;
     public BlackoutBall(bool tooltip = true) : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Blackout", typeof(GameObject))) as GameObject;
@@ -25,8 +25,32 @@ public class BlackoutBall : SpecialBall
         }
     }
 
+    public override void ActionOnDestroy()
+    {
+        if (_zone != null)
+        {
+            for (int i = 0; i < GameZone.LengthPlayGround; i++)
+            {
+                for (int j = 0; j < GameZone.HeightPlayGround; j++)
+                {
+                    if (_zone.Playground[j][i].HasBall())
+                    {
+                        if (_zone.Playground[j][i].Ball.BallObject != null)
+                        {
+                            _zone.Playground[j][i].Ball.SetHideBall(false);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public override void Action(GameZone zone, int x, int y)
     {
+        if(_zone == null)
+        {
+            _zone = zone;
+        }
         // Play Animation
         if (!_animPlayed)
         {
@@ -96,4 +120,5 @@ public class BlackoutBall : SpecialBall
     {
         return new BlackoutBall();
     }
+
 }

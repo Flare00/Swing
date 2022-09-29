@@ -15,7 +15,6 @@ public class FaintBall : SpecialBall
         }
     }
     private List<BallSave> _savedBalls = new List<BallSave>();
-    //private Ball[] _saveArray = new Ball[8];
 
     public FaintBall(bool tooltip = true) : base()
     {
@@ -31,58 +30,21 @@ public class FaintBall : SpecialBall
         }
 
     }
-    //Old Action
-    /*public override void Action(GameZone zone, int x, int y)
+
+    public override void ActionOnDestroy()
     {
-        int count = 0;
-        for (int i = -1; i <= 1; i++)
+        foreach (BallSave b in _savedBalls)
         {
-            for (int j = -1; j <= 1; j++)
+            if (b.ball != null)
             {
-                if (!(i == 0 && j == 0))
+                if (b.ball.BallObject != null)
                 {
-                    if (x + i >= 0 && x + i < GameZone.LengthPlayGround)
-                    {
-                        if (y + j >= 0 && y + j < GameZone.HeightPlayGround)
-                        {
-                            if (zone.Playground[y + j][x + i].HasBall())
-                            {
-                                Ball b = zone.Playground[y + j][x + i].Ball;
-                                if (b.BallObject != null)
-                                {
-                                    if (_saveArray[count] == null)
-                                    {
-                                        _saveArray[count] = b;
-                                    }
-                                    else if (_saveArray[count] != b)
-                                    {
-                                        if (_saveArray[count].BallObject != null)
-                                        {
-                                            _saveArray[count].SetHideBall(false);
-                                        }
-                                        _saveArray[count] = b;
-                                    }
-                                    _saveArray[count].SetHideBall(true);
-                                }
-                            }
-                            else
-                            {
-                                if (_saveArray[count] != null)
-                                {
-                                    if (_saveArray[count].BallObject != null)
-                                    {
-                                        _saveArray[count].SetHideBall(false);
-                                    }
-                                    _saveArray[count] = null;
-                                }
-                            }
-                        }
-                    }
-                    count++;
+                    b.ball.SetHideBall(false);
                 }
             }
         }
-    }*/
+        _savedBalls.Clear();
+    }
 
     public override void Action(GameZone zone, int x, int y)
     {

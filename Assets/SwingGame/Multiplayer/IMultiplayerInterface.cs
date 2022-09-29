@@ -6,4 +6,5 @@ public interface IMultiplayerInterface
 {
     public int PlayerId();
     public void ReceiveData(MultiplayerData data);
+    public void ReceiveGameOver();
 }

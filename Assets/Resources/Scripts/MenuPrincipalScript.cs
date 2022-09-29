@@ -91,13 +91,14 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
         eventSystem.gameObject.SetActive(false);
     }
 
-    public void Multi()
+    public void Multi(bool coop)
     {
+
         CrossSceneData.Multijoueur = true;
         CrossSceneData.Mission = false;
         CrossSceneData.TransitionMainMenu = true;
 
-        MultiplayerSystem.CreateInstance(false);
+        MultiplayerSystem.CreateInstance(coop);
         transitionScript.LoadSceneWithTransition("Game");
         eventSystem.gameObject.SetActive(false);
     }
@@ -230,13 +231,15 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
         menuSettings.transform.Find("SettingsScript").GetComponent<ApplySettingsScript>().SaveToFile();
     }
 
-    public void LaunchUMWeb()
-    {
-        Application.OpenURL("https://www.umontpellier.fr/");
-    }
 
     public void LaunchFDSWeb()
     {
         Application.OpenURL("https://sciences.edu.umontpellier.fr/");
     }
+
+    public void LaunchUMWeb()
+    {
+        Application.OpenURL("https://www.umontpellier.fr/");
+    }
+
 }

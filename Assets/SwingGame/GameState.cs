@@ -26,6 +26,7 @@ public class GameState
     private bool _gameOver;
     private bool _gameOverComputing;
     private int _gameOverRow;
+    private bool _forceGameOver;
     private float _timingGameOver;
     private float _time;
     private string _name;
@@ -81,11 +82,16 @@ public class GameState
 
     public void StartGameOver()
     {
-        SaveManager.instance.Disable();
-        SaveManager.instance.GameOver();
-        _gameOverComputing = true;
-        _gameOverRow = GameZone.HeightPlayGround;
-        _timingGameOver = TIMING_BETWEEN_GAMEOVER_ROWS;
+        if (!_gameOverComputing)
+        {
+            SaveManager.instance.Disable();
+            SaveManager.instance.GameOver();
+            _gameOverComputing = true;
+            _gameOverRow = GameZone.HeightPlayGround;
+            _timingGameOver = TIMING_BETWEEN_GAMEOVER_ROWS;
+            if (_multiplayer)
+                MultiplayerSystem.getInstance().SendGameOver(this._playerNumber);
+        }
     }
 
     public bool UpdateGameOver(float deltaT)
@@ -154,6 +160,7 @@ public class GameState
     }
 
     public bool GameOver { get => _gameOver; set => _gameOver = value; }
+    public bool ForceGameOver { get => _forceGameOver; set => _forceGameOver = value; }
 
     public bool GameOverComputing
     {
@@ -225,4 +232,6 @@ public class GameState
         }
         return res;
     }
+
+
 }

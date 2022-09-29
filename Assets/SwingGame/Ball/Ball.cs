@@ -41,6 +41,7 @@ public abstract class Ball : ICloneable
     {
         if (this._ballObject != null)
         {
+            ActionOnDestroy();
             GameObject.Destroy(this._ballObject);
             this._ballObject = null;
         }
@@ -67,5 +68,6 @@ public abstract class Ball : ICloneable
     abstract public void SetHideBall(bool hide);
     abstract public void Action(GameZone zone, int x, int y);
     abstract public void ActionOnSwing(GameZone zone, int x, int y);
+    abstract public void ActionOnDestroy();
     public abstract object Clone();
 }

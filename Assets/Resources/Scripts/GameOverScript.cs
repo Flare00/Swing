@@ -18,6 +18,8 @@ public class GameOverScript : MonoBehaviour, IAskNameListener, ILeaderboardChang
     private float _speedScore = 0.5f;
     private ulong _scoreP1 = 0;
     private ulong _scoreP2 = 0;
+    private ulong _scoreCoop = 0;
+    private bool _isCoop = false;
 
     private bool _solo = true;
 
@@ -28,6 +30,8 @@ public class GameOverScript : MonoBehaviour, IAskNameListener, ILeaderboardChang
         eventSystem.gameObject.SetActive(false);
         canvas.gameObject.SetActive(false);
         canvas.transform.Find("InfoPartieDuo/Winner_Value").gameObject.SetActive(false);
+        canvas.transform.Find("InfoPartieDuo/ScoreCoop_Title").gameObject.SetActive(false);
+        canvas.transform.Find("InfoPartieDuo/ScoreCoop_Value").gameObject.SetActive(false);
         canvas.GetComponent<CanvasGroup>().alpha = 0.0f;
     }
 
@@ -75,21 +79,29 @@ public class GameOverScript : MonoBehaviour, IAskNameListener, ILeaderboardChang
                     canvas.transform.Find("InfoPartieDuo/ScoreP1_Value").GetComponent<TMPro.TextMeshProUGUI>().text = _scoreP1.ToString("n0");
                     canvas.transform.Find("InfoPartieDuo/ScoreP2_Value").GetComponent<TMPro.TextMeshProUGUI>().text = _scoreP2.ToString("n0");
 
-                    canvas.transform.Find("InfoPartieDuo/Winner_Value").gameObject.SetActive(true);
+                    if (!_isCoop)
+                    {
+                        canvas.transform.Find("InfoPartieDuo/Winner_Value").gameObject.SetActive(true);
+                        if (_scoreP1 > _scoreP2)
+                        {
+                            LocalizedString lsPlayer = new LocalizedString("Local", "joueur");
+                            LocalizedString lsWin = new LocalizedString("Local", "gagne");
+                            canvas.transform.Find("InfoPartieDuo/Winner_Value").GetComponent<TMPro.TextMeshProUGUI>().text = lsPlayer.GetLocalizedString() + " 1 " + lsWin.GetLocalizedString();
+                        }
+                        else if (_scoreP2 > _scoreP1)
+                        {
+                            LocalizedString lsPlayer = new LocalizedString("Local", "joueur");
+                            LocalizedString lsWin = new LocalizedString("Local", "gagne");
+                            canvas.transform.Find("InfoPartieDuo/Winner_Value").GetComponent<TMPro.TextMeshProUGUI>().text = lsPlayer.GetLocalizedString() + " 2 " + lsWin.GetLocalizedString();
+                        }
+                    } else
+                    {
+
+                        canvas.transform.Find("InfoPartieDuo/ScoreCoop_Value").GetComponent<TMPro.TextMeshProUGUI>().text = _scoreCoop.ToString("n0");
+                    }
 
 
-                    if (_scoreP1 > _scoreP2)
-                    {
-                        LocalizedString lsPlayer = new LocalizedString("Local", "joueur");
-                        LocalizedString lsWin = new LocalizedString("Local", "gagne");
-                        canvas.transform.Find("InfoPartieDuo/Winner_Value").GetComponent<TMPro.TextMeshProUGUI>().text = lsPlayer.GetLocalizedString() + " 1 " + lsWin.GetLocalizedString();
-                    }
-                    else if (_scoreP2 > _scoreP1)
-                    {
-                        LocalizedString lsPlayer = new LocalizedString("Local", "joueur");
-                        LocalizedString lsWin = new LocalizedString("Local", "gagne");
-                        canvas.transform.Find("InfoPartieDuo/Winner_Value").GetComponent<TMPro.TextMeshProUGUI>().text = lsPlayer.GetLocalizedString() + " 2 " + lsWin.GetLocalizedString();
-                    }
+
                 }
             } 
             else
@@ -105,6 +117,10 @@ public class GameOverScript : MonoBehaviour, IAskNameListener, ILeaderboardChang
                     //LocalizationSettings.StringDatabase.GetTable("");
                     canvas.transform.Find("InfoPartieDuo/ScoreP1_Value").GetComponent<TMPro.TextMeshProUGUI>().text = ((ulong)(_scoreP1 * _avancementScore)).ToString("n0");
                     canvas.transform.Find("InfoPartieDuo/ScoreP2_Value").GetComponent<TMPro.TextMeshProUGUI>().text = ((ulong)(_scoreP2 * _avancementScore)).ToString("n0");
+                    if (_isCoop)
+                    {
+                        canvas.transform.Find("InfoPartieDuo/ScoreCoop_Value").GetComponent<TMPro.TextMeshProUGUI>().text = ((ulong)(_scoreCoop * _avancementScore)).ToString("n0");
+                    }
                 }
             }
         }
@@ -136,10 +152,18 @@ public class GameOverScript : MonoBehaviour, IAskNameListener, ILeaderboardChang
         _isGameOver = false;
     }
 
-    public void SetScore(ulong p1Score, ulong p2Score = 0)
+    public void SetScore(ulong p1Score, ulong p2Score = 0, bool coop = false)
     {
         this._scoreP1 = p1Score;
         this._scoreP2 = p2Score;
+        if (coop)
+        {
+            this._scoreCoop = p1Score + p2Score;
+            _isCoop = coop;
+
+            canvas.transform.Find("InfoPartieDuo/ScoreCoop_Title").gameObject.SetActive(true);
+            canvas.transform.Find("InfoPartieDuo/ScoreCoop_Value").gameObject.SetActive(true);
+        }
 
         if(this._solo && _scoreP1 > 0)
         {
@@ -161,6 +185,7 @@ public class GameOverScript : MonoBehaviour, IAskNameListener, ILeaderboardChang
     public void RestartAction()
     {
         CrossSceneData.LoadGame = false;
+        MultiplayerSystem.CreateInstance(_isCoop);
         transitionScript.LoadSceneWithTransition("Game");
     }
 

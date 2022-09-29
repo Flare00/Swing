@@ -273,5 +273,9 @@ public class Game
         return _state.Score;
     }
 
+    public void ForceGameOver()
+    {
+        this._state.ForceGameOver = true;
+    }
 
 }

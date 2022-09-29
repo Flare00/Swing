@@ -89,6 +89,20 @@ public class MultiplayerSystem
         return false;
     }
 
+    public void SendGameOver(int idPlayer)
+    {
+        if (coop)
+        {
+            foreach (IMultiplayerInterface imi in players)
+            {
+                if (imi.PlayerId() != idPlayer)
+                    imi.ReceiveGameOver();
+            }
+        }
+        
+    }
+
+    public bool IsCoop() { return coop; }
 
 
 }

@@ -5,7 +5,7 @@ using SwingGame.Media;
 using UnityEngine;
 using UnityEditor.Localization.Plugins.XLIFF.V12;
 
-public class GameZone
+public class GameZone : IMultiplayerInterface
 {
     public const int HeightPrediction = 2;
 
@@ -140,8 +140,7 @@ public class GameZone
 
         //Init Animator
         _animator = new SwingAnimator(this, _swings);
-        if (_gameState.Multiplayer && MultiplayerSystem.getInstance() != null)
-            MultiplayerSystem.getInstance().SubscribePlayer(_animator);
+
 
         _zonePrediction.transform.Translate(0.5f, -HeightPrediction, 0);
         _zonePlayer.transform.Translate(0.5f, -HeightPrediction - SizeBall - SpacingPredictionPlayer, 0);
@@ -149,6 +148,9 @@ public class GameZone
         _zoneSwings.transform.Translate(0.5f, -HeightPrediction - HeightPlayGround - SpacingPredictionPlayer - SpacingPlayerPlayground - (2 * SizeBall), 0);
 
         _zoneGlobal.transform.Translate((-LengthPlayGround * SpacingBall / 2.0f) + 0.25f, 7, 0);
+
+        if (_gameState.Multiplayer && MultiplayerSystem.getInstance() != null)
+            MultiplayerSystem.getInstance().SubscribePlayer(this);
     }
 
     public GameZone(GameState gs, GameData gd)
@@ -868,5 +870,19 @@ public class GameZone
                 _playground[i][j].ExplodeBall(this, Effect.EffectType.BallExplosion);
             }
         }
+    }
+    int IMultiplayerInterface.PlayerId()
+    {
+        return this._gameState.PlayerNumber;
+    }
+
+    void IMultiplayerInterface.ReceiveData(MultiplayerData data)
+    {
+        this._animator.ReceiveData(data);
+    }
+
+    void IMultiplayerInterface.ReceiveGameOver()
+    {
+        this.GameState.StartGameOver();
     }
 }

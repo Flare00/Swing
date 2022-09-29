@@ -17,6 +17,7 @@ public class SwingLoop : MonoBehaviour
     private SwingInput _inputV2;
     private int _nbPlayer = 1;
     private bool _multiplayer = false;
+    private bool _coop = false;
 
     private bool _isPause;
     private bool _isGameOver = false;
@@ -31,6 +32,10 @@ public class SwingLoop : MonoBehaviour
         _isPause = false;
         _inputV2 = new SwingInput();
         _multiplayer = CrossSceneData.Multijoueur;
+        if (_multiplayer)
+        {
+            _coop = MultiplayerSystem.getInstance().IsCoop();
+        }
         // 0 = 16/9 , 1 = 4/3, 2 = 16/9 2 joueur , 3 = 4/3 2 joueur
         int aspectMode = 0;
         float ratio = (float)Screen.width / (float)Screen.height;
@@ -81,6 +86,15 @@ public class SwingLoop : MonoBehaviour
                 gameOverAskedCounter++;
             }
         }
+        if (_coop && (gameOverAskedCounter > 0 && gameOverAskedCounter < _nbPlayer)){
+            for (int i = 0; i < _nbPlayer; i++)
+            {
+                if (!_games[i].IsGameOver())
+                {
+                    _games[i].ForceGameOver();
+                }
+            }
+        }
 
         if(gameOverCounter >= this._nbPlayer)
         {
@@ -105,9 +119,9 @@ public class SwingLoop : MonoBehaviour
                 gameoverScript.SetScore(_games[0].State.Score);
             }
             else if (_nbPlayer == 2)
-            {
+            {       
                 gameoverScript.Show(false);
-                gameoverScript.SetScore(_games[0].State.Score, _games[1].State.Score);
+                gameoverScript.SetScore(_games[0].State.Score, _games[1].State.Score, _coop);
             }
 
         }
