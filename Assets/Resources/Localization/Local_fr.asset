@@ -175,15 +175,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 59383325797797888
-    m_Localized: Remerciement
-    m_Metadata:
-      m_Items: []
-  - m_Id: 59384284431142912
-    m_Localized: 'Mme. Noura FARAJ
-
-      Pascal LARVET
-
-      Julie BADIA'
+    m_Localized: Remerciements
     m_Metadata:
       m_Items: []
   - m_Id: 59433540087238656
@@ -191,7 +183,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 59435850041446400
-    m_Localized: Licence
+    m_Localized: Licences
     m_Metadata:
       m_Items: []
   - m_Id: 59437034575810560
