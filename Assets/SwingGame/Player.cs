@@ -8,6 +8,19 @@ public class Player : BallContainer
     private int _position;
     private Animator _animator;
 
+    public Player(GameState gs,int initPos)
+    {
+        _gameState = gs;
+        _position = initPos;
+        //ContainerObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        GameObject.Destroy(ContainerObject);
+        ContainerObject = GameObject.Instantiate(Resources.Load("Prefabs/PlayerPrefab", typeof(GameObject))) as GameObject;
+        ContainerObject.name = "PlayerContainer";
+        _animator = ContainerObject.GetComponentInChildren<Animator>();
+        ContainerObject.transform.localPosition = new Vector3(_position * GameZone.SpacingBall, 0 , 0); 
+    }
+
+
     public Player(GameState gs)
     {
         _gameState = gs;

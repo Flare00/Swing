@@ -176,7 +176,7 @@ public class GameZone
         _listEffect = new List<Effect>();
 
         //Init Player
-        _player = new Player(_gameState);
+        _player = new Player(_gameState,gd.playerPos);
         _player.ContainerObject.transform.parent = _zonePlayer.transform;
         _anchorFlyLeft = new GameObject("anchorSwingLeft");
         _anchorFlyLeft.transform.parent = _zonePlayer.transform;
@@ -186,7 +186,6 @@ public class GameZone
         _anchorFlyRight.transform.position =
             new Vector3((((NbSwings * 2) - 1) * SpacingBall) + DistanceExitFlying, 0, 0);
         _player.Ball = BallFactory.getInstance().GenerateSavedBall(gd.playerHand);
-        _player.Position = gd.playerPos;
 
 
         //Init Prediction Tab
