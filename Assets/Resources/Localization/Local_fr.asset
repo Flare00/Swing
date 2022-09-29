@@ -158,5 +158,33 @@ MonoBehaviour:
     m_Localized: Non
     m_Metadata:
       m_Items: []
+  - m_Id: 59378290288381952
+    m_Localized: "D\xE9veloppeurs"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59378345460256768
+    m_Localized: Graphistes 3D / Animateurs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59380459313975296
+    m_Localized: Encadrant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59380822356152320
+    m_Localized: Mme. Noura FARAJ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59383325797797888
+    m_Localized: Remerciement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59384284431142912
+    m_Localized: 'Mme. Noura FARAJ
+
+      Pascal LARVET
+
+      Julie BADIA'
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
