@@ -242,4 +242,13 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
         Application.OpenURL("https://www.umontpellier.fr/");
     }
 
+
+    public void Credits()
+    {
+        CrossSceneData.TransitionMainMenu = true;
+        transitionScript.LoadSceneWithTransition("Credits");
+    }
+
+
+
 }
