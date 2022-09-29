@@ -19,7 +19,7 @@ public class RandomBall : SpecialBall
 
     public override void Action(GameZone zone, int x, int y)
     {
-        // Nothing to do
+        zone.Playground[y][x].ExplodeBall(zone,Effect.EffectType.BallSmoke);
     }
 
     public override object Clone()

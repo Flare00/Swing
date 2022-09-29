@@ -376,6 +376,7 @@ public class GameZone
             {
                 if (_prediction[0][_player.Position].Ball.GetType() == typeof(RandomBall))
                 {
+                    _prediction[0][_player.Position].Ball.DestroyWithBallObject();
                     _player.Ball = BallFactory.getInstance().giveRandomPU();
                 }
                 else
