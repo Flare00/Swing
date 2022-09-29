@@ -21,7 +21,7 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
     public GameObject buttonBackSelectGameMode;
     public GameObject scoreAnchor;
     public GameObject loadGamePopup;
-
+    public Button buttonUM;
     private ControlsGame.UIActions _actions;
 
     private bool _leaderboardShow = false;
@@ -165,16 +165,38 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
         eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(selectGameMode.transform.Find("Button_Solo").gameObject);
         _selectGameModeShow = true;
         selectGameMode.SetActive(true);
+        setUMNavigation(1);
     }
+
+
     public void HideSelectGameMode()
     {
         eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(buttonsContainer.transform.Find("Button_Play").gameObject);
         _selectGameModeShow = false;
         selectGameMode.SetActive(false);
         buttonsContainer.SetActive(true);
+        setUMNavigation(0);
     }
 
-
+    private void setUMNavigation(int menu)
+    {
+        Navigation nNav = new Navigation();
+        nNav.mode = Navigation.Mode.Explicit;
+        nNav.selectOnRight = buttonUM.navigation.selectOnRight;
+        switch (menu)
+        {
+            case 0:
+                nNav.selectOnLeft = buttonsContainer.transform.Find("Button_Exit").gameObject.GetComponent<Button>();
+                break;
+            case 1:
+                nNav.selectOnLeft = selectGameMode.transform.Find("Button_Back").gameObject.GetComponent<Button>();
+                break;
+            default:
+                nNav.selectOnLeft = buttonsContainer.transform.Find("Button_Exit").gameObject.GetComponent<Button>();
+                break;
+        }
+        buttonUM.navigation = nNav;
+    }
 
     public void OnLeaderboardReceive(Leaderboard.ScorePlayer[] list)
     {
@@ -206,5 +228,15 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
 
 
         menuSettings.transform.Find("SettingsScript").GetComponent<ApplySettingsScript>().SaveToFile();
+    }
+
+    public void LaunchUMWeb()
+    {
+        Application.OpenURL("https://www.umontpellier.fr/");
+    }
+
+    public void LaunchFDSWeb()
+    {
+        Application.OpenURL("https://sciences.edu.umontpellier.fr/");
     }
 }
