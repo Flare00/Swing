@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System;
 using SwingGame.Media;
 using UnityEngine;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public class GameZone : IMultiplayerInterface
 {
