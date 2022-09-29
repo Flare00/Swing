@@ -1,9 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Localization;
 
 public class FaintBall : SpecialBall
 {
-    private Ball[] _saveArray = new Ball[8];
+    private class BallSave
+    {
+        public Ball ball;
+        public bool stay;
+        public BallSave(Ball ball, bool stay = true)
+        {
+            this.ball = ball;
+            this.stay = stay;
+        }
+    }
+    private List<BallSave> _savedBalls = new List<BallSave>();
+    //private Ball[] _saveArray = new Ball[8];
 
     public FaintBall(bool tooltip = true) : base()
     {
@@ -17,9 +29,10 @@ public class FaintBall : SpecialBall
         {
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
         }
-    }
 
-    public override void Action(GameZone zone, int x, int y)
+    }
+    //Old Action
+    /*public override void Action(GameZone zone, int x, int y)
     {
         int count = 0;
         for (int i = -1; i <= 1; i++)
@@ -69,6 +82,79 @@ public class FaintBall : SpecialBall
                 }
             }
         }
+    }*/
+
+    public override void Action(GameZone zone, int x, int y)
+    {
+        for (int i = 0; i < _savedBalls.Count; i++)
+        {
+            _savedBalls[i].stay = false;
+        }
+        for (int i = -1; i <= 1; i++)
+        {
+            if (x + i >= 0 && x + i < GameZone.LengthPlayGround)
+            {
+                for (int j = -1; j <= 1; j++)
+                {
+                    if ((!(i == 0 && j == 0)) && (y + j >= 0 && y + j < GameZone.HeightPlayGround))
+                    {
+                        if (zone.Playground[y + j][x + i].HasBall())
+                        {
+                            Ball b = zone.Playground[y + j][x + i].Ball;
+                            bool found = false;
+                            for (int k = 0, max = _savedBalls.Count; k < max && !found; k++)
+                            {
+                                if (b == _savedBalls[k].ball)
+                                {
+                                    _savedBalls[k].stay = true;
+                                    found = true;
+                                }
+                            }
+                            if (!found)
+                            {
+                                if (b.BallObject != null)
+                                {
+                                    b.SetHideBall(true);
+                                    _savedBalls.Add(new BallSave(b));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        int it = 0;
+        while (it < _savedBalls.Count)
+        {
+            if (_savedBalls[it].stay)
+            {
+                it++;
+            }
+            else
+            {
+                if (_savedBalls[it].ball != null)
+                    if (_savedBalls[it].ball.BallObject != null)
+                        _savedBalls[it].ball.SetHideBall(false);
+                _savedBalls.RemoveAt(it);
+            }
+        }
+    }
+
+    public override void ActionOnSwing(GameZone zone, int x, int y)
+    {
+        foreach (BallSave b in _savedBalls)
+        {
+            if (b.ball != null)
+            {
+                if (b.ball.BallObject != null)
+                {
+                    b.ball.SetHideBall(false);
+                }
+            }
+        }
+        _savedBalls.Clear();
+
     }
 
     public override object Clone()

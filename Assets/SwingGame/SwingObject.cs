@@ -16,10 +16,12 @@ public class SwingObject
     private int _swingState;
     private SwingAnimator _animator;
     private bool _deactivated;
+    private GameZone _zone;
 
 
-    public SwingObject(Vector2Int positionLeft, Transform parentTransform)
+    public SwingObject(Vector2Int positionLeft, Transform parentTransform, GameZone zone)
     {
+        _zone = zone;
         Vector2Int positionRight = positionLeft + Vector2Int.right;
         _parentTransform = parentTransform;
         _swingState = SWING_STATE_EQUAL_HEIGHT;
@@ -282,6 +284,10 @@ public class SwingObject
                     _animator.AddFlyingBall(b, GameZone.HeightPlayGround - i, bigWeight - smallWeight,
                         new Vector2Int(positionInvTilt.x, i),
                         tiltLeft ? SwingAnimator.Direction.DirectionLeft : SwingAnimator.Direction.DirectionRight);
+                    if (!b.IsNormalBall)
+                    {
+                        b.ActionOnSwing(_zone, i, positionInvTilt.x);
+                    }
                 }
                 else
                 {

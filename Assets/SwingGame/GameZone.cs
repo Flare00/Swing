@@ -127,7 +127,7 @@ public class GameZone
         _swings = new SwingObject[NbSwings];
         for (int i = 0; i < NbSwings; i++)
         {
-            _swings[i] = new SwingObject(new Vector2Int(2 * i, 1), _zoneSwings.transform);
+            _swings[i] = new SwingObject(new Vector2Int(2 * i, 1), _zoneSwings.transform, this);
         }
 
         //Init Animator

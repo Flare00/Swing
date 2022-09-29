@@ -19,4 +19,7 @@ public abstract class SpecialBall : Ball
     public override void SetHideBall(bool hide)
     {
     }
+    public override void ActionOnSwing(GameZone zone, int x, int y)
+    {
+    }
 }

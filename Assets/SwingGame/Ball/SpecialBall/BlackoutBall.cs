@@ -55,7 +55,10 @@ public class BlackoutBall : SpecialBall
                 {
                     if (zone.Playground[j][i].HasBall())
                     {
-                        zone.Playground[j][i].Ball.SetHideBall(false);
+                        if (zone.Playground[j][i].Ball.BallObject != null)
+                        {
+                            zone.Playground[j][i].Ball.SetHideBall(false);
+                        }
                     }
                 }
             }
@@ -63,6 +66,23 @@ public class BlackoutBall : SpecialBall
             zone.Playground[y][x].ExplodeBall(zone, Effect.EffectType.BallSmoke);
         }
         _firstPass = false;
+    }
+
+    public void ActionOnExit(GameZone zone)
+    {
+        for(int i = 0; i < GameZone.LengthPlayGround; i++)
+        {
+            for(int j = 0; j < GameZone.HeightPlayGround; j++)
+            {
+                if (zone.Playground[j][i].HasBall())
+                {
+                    if (zone.Playground[j][i].Ball.BallObject != null)
+                    {
+                        zone.Playground[j][i].Ball.SetHideBall(false);
+                    }
+                }
+            }
+        }
     }
 
     public void playAnimation()

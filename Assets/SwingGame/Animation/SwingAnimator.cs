@@ -222,6 +222,11 @@ public class SwingAnimator : Animator, IMultiplayerInterface
                          (GameZone.LengthPlayGround * GameZone.SpacingBall + 2f * GameZone.DistanceExitFlying - GameZone.SpacingBall);
             floatingBall.ContainerObject.transform.Translate(new Vector3(depl, 0, 0));
 
+            if(floatingBall.Ball is BlackoutBall)
+            {
+                BlackoutBall blackout = floatingBall.Ball as BlackoutBall;
+                blackout.ActionOnExit(_gameZone);
+            }
             //send the object to the other player.
             if (MultiplayerSystem.getInstance() != null)
             {

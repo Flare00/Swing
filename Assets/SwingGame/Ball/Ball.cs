@@ -66,5 +66,6 @@ public abstract class Ball : ICloneable
 
     abstract public void SetHideBall(bool hide);
     abstract public void Action(GameZone zone, int x, int y);
+    abstract public void ActionOnSwing(GameZone zone, int x, int y);
     public abstract object Clone();
 }
