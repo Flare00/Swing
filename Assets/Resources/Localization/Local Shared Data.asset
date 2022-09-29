@@ -179,6 +179,22 @@ MonoBehaviour:
     m_Key: specialThanksData
     m_Metadata:
       m_Items: []
+  - m_Id: 59433540087238656
+    m_Key: espace
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59435850041446400
+    m_Key: licence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59437014984216576
+    m_Key: licence_sounds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59437034575810560
+    m_Key: licence_music
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
