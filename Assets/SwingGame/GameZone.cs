@@ -22,6 +22,9 @@ public class GameZone
     public const float DistanceExitFlying = 3f * SpacingBall;
     public const int WaitBetweenSaveTime = 30;
 
+    private GameObject _psWaringRed;
+    private GameObject _psWaringOrange;
+
     private struct MultiplicatorLightPlayground
     {
         public Material level4_Right, level4_Left;
@@ -81,6 +84,11 @@ public class GameZone
         _multiplicatorLightPlayground.level4_Right =
             decor.transform.Find("Light_Mul4").Find("Right").GetComponent<Renderer>().material;
         decor.transform.parent = _zoneGlobal.transform;
+
+        _psWaringRed = decor.transform.Find("PS_WarningGameOver").Find("Red").gameObject;
+        _psWaringOrange = decor.transform.Find("PS_WarningGameOver").Find("Orange").gameObject;
+        _psWaringRed.SetActive(false);
+        _psWaringOrange.SetActive(false);
 
         _listEffect = new List<Effect>();
 
@@ -172,6 +180,11 @@ public class GameZone
         _multiplicatorLightPlayground.level4_Right =
             decor.transform.Find("Light_Mul4").Find("Right").GetComponent<Renderer>().material;
         decor.transform.parent = _zoneGlobal.transform;
+
+        _psWaringRed = decor.transform.Find("PS_WarningGameOver").Find("Red").gameObject;
+        _psWaringOrange = decor.transform.Find("PS_WarningGameOver").Find("Orange").gameObject;
+        _psWaringRed.SetActive(false);
+        _psWaringOrange.SetActive(false);
 
         _listEffect = new List<Effect>();
 
@@ -479,6 +492,8 @@ public class GameZone
             ComputeAlignment();
             //Compute Stack of Normal balls
             ComputeStack();
+            //Check Warning
+            WarningGameOver();
             //Start a GameOver if the last row is not empty
             if (!IsLastRowEmpty() && !_gameState.GameOverComputing) _gameState.StartGameOver();
         }
@@ -495,6 +510,44 @@ public class GameZone
         //Update all the VFXs
         UpdateEffect();
         _saveDelay--;
+    }
+
+    private void WarningGameOver()
+    {
+        bool find = false;
+
+        for (int i = 0; i < LengthPlayGround && !find; i++)
+        {
+            if(_playground[HeightPlayGround - 2][i].HasBall())
+            {
+                find = true;
+            }
+        }
+        if(!find)
+        {
+            for (int i = 0; i < LengthPlayGround && !find; i++)
+            {
+                if (_playground[HeightPlayGround - 3][i].HasBall())
+                {
+                    find = true;
+                }
+            }
+            if (find)
+            {
+                _psWaringRed.SetActive(false);
+                _psWaringOrange.SetActive(true);
+            }
+            else
+            {
+                _psWaringOrange.SetActive(false);
+                _psWaringRed.SetActive(false);
+            }
+        }
+        else
+        {
+            _psWaringOrange.SetActive(false);
+            _psWaringRed.SetActive(true);
+        }
     }
 
     private bool IsLastRowEmpty()
