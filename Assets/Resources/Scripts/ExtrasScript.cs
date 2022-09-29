@@ -321,23 +321,23 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 22:
                 // Tornado
-                videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
+                videoPlayer.clip = Resources.Load("Videos/VideoTornado", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "tornado_h");
                 content = new LocalizedString("PowerUp", "tornado_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
                 textContent.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = content.GetLocalizedString();
                 break;
             case 23:
-                // ?
-                videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
+                // Faint
+                videoPlayer.clip = Resources.Load("Videos/VideoFaint", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "faint_h");
                 content = new LocalizedString("PowerUp", "faint_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
                 textContent.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = content.GetLocalizedString();
                 break;
             case 24:
-                // ?
-                videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
+                // Blackout
+                videoPlayer.clip = Resources.Load("Videos/VideoBlackout", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "blackout_h");
                 content = new LocalizedString("PowerUp", "blackout_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
@@ -345,7 +345,7 @@ public class ExtrasScript : MonoBehaviour, ControlsGame.IUIActions
                 break;
             case 25:
                 // Random
-                videoPlayer.clip = Resources.Load("Videos/VideoJoker", typeof(VideoClip)) as VideoClip;
+                videoPlayer.clip = Resources.Load("Videos/VideoRandom", typeof(VideoClip)) as VideoClip;
                 header = new LocalizedString("PowerUp", "random_h");
                 content = new LocalizedString("PowerUp", "random_c");
                 textHeader.gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = header.GetLocalizedString();
