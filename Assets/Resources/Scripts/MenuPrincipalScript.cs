@@ -61,6 +61,7 @@ public class MenuPrincipalScript : MonoBehaviour, ISettingsCallBack, ILeaderboar
         if(SaveManager.instance.HasSave()){
             selectGameMode.SetActive(false);
             loadGamePopup.SetActive(true);
+            eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(loadGamePopup.transform.Find("Button_LoadGame").gameObject);
         }
         else{
             NewGame();

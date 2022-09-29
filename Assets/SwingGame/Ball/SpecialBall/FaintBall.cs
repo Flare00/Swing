@@ -3,6 +3,8 @@ using UnityEngine.Localization;
 
 public class FaintBall : SpecialBall
 {
+    private Ball[] _saveArray = new Ball[8];
+
     public FaintBall(bool tooltip = true) : base()
     {
         this.BallObject = GameObject.Instantiate(Resources.Load("Prefabs/PU_Faint", typeof(GameObject))) as GameObject;
@@ -10,7 +12,7 @@ public class FaintBall : SpecialBall
 
         LocalizedString header = new LocalizedString("PowerUp", "faint_h");
         LocalizedString content = new LocalizedString("PowerUp", "faint_c");
-        
+
         if (tooltip)
         {
             this.setTooltip(header.GetLocalizedString(), content.GetLocalizedString());
@@ -19,10 +21,54 @@ public class FaintBall : SpecialBall
 
     public override void Action(GameZone zone, int x, int y)
     {
-        // garder une mat 3x3 
-        // si les balls sont diff ? si oui => dehide la case précendente si existante 
-                                        // => hide nouvelle balle dans la mat 3x3
-                                        // => sinon fait rien
+        int count = 0;
+        for (int i = -1; i <= 1; i++)
+        {
+            for (int j = -1; j <= 1; j++)
+            {
+                if (!(i == 0 && j == 0))
+                {
+                    if (x + i >= 0 && x + i < GameZone.LengthPlayGround)
+                    {
+                        if (y + j >= 0 && y + j < GameZone.HeightPlayGround)
+                        {
+                            if (zone.Playground[y + j][x + i].HasBall())
+                            {
+                                Ball b = zone.Playground[y + j][x + i].Ball;
+                                if (b.BallObject != null)
+                                {
+                                    if (_saveArray[count] == null)
+                                    {
+                                        _saveArray[count] = b;
+                                    }
+                                    else if (_saveArray[count] != b)
+                                    {
+                                        if (_saveArray[count].BallObject != null)
+                                        {
+                                            _saveArray[count].SetHideBall(false);
+                                        }
+                                        _saveArray[count] = b;
+                                    }
+                                    _saveArray[count].SetHideBall(true);
+                                }
+                            }
+                            else
+                            {
+                                if (_saveArray[count] != null)
+                                {
+                                    if (_saveArray[count].BallObject != null)
+                                    {
+                                        _saveArray[count].SetHideBall(false);
+                                    }
+                                    _saveArray[count] = null;
+                                }
+                            }
+                        }
+                    }
+                    count++;
+                }
+            }
+        }
     }
 
     public override object Clone()

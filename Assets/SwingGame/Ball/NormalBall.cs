@@ -121,6 +121,5 @@ public class NormalBall : Ball
                 _isHide = false;
             }
         }
-
     }
 }

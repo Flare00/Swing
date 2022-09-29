@@ -32,7 +32,7 @@ public class BallFactory
 
     private static PuType[] PUTypes =
     {
-        // PuType.RandomType,           // DO NOT MOVE RANDOMTYPE FROM POSITION 0!
+        PuType.RandomType,           // DO NOT MOVE RANDOMTYPE FROM POSITION 0!
         PuType.JokerType,
         PuType.BombType,
         PuType.ZapHorizontalType,
@@ -51,35 +51,35 @@ public class BallFactory
         PuType.TransformBombType,
         PuType.BrickTowerType,
         PuType.PlasmaTriangleType,
-        // PuType.TornadoType,
-        // PuType.FaintType,
-        // PuType.BlackoutType
+        PuType.TornadoType,
+        PuType.FaintType,
+        PuType.BlackoutType
     };
 
     private static Dictionary<PuType, float[]> PROBABILITY_PU = new Dictionary<PuType, float[]>
     {
-        // {PuType.RandomType, new[] {0.5f, 0.5f, 0.25f, 0.2f, 0.1f, 0.05f, 0, 0, 0, 0}},
-        {PuType.JokerType, new[] {0.5f, 0.5f, 0.25f, 0.2f, 0.1f, 0.05f, 0, 0, 0, 0}},
-        {PuType.BombType, new[] {0.5f, 0.5f, 0.25f, 0.2f, 0.1f, 0.08f, 0.07f, 0.07f,0.07f, 0.06f}},
-        {PuType.ZapHorizontalType, new[] {0, 0, 0.25f, 0.20f, 0.10f, 0.09f, 0.07f, 0.07f, 0.07f, 0.06f}},
-        {PuType.ZapDiagonalType, new[] {0, 0, 0.25f, 0.20f, 0.10f, 0.09f, 0.07f, 0.07f, 0.07f, 0.06f}},
-        {PuType.CutterType, new[] {0, 0, 0, 0.20f, 0.10f, 0.08f, 0.07f, 0.07f, 0.07f, 0.06f}},
-        {PuType.PlasmaNoTriangleType, new[] {0, 0, 0, 0, 0.13f, 0.08f, 0.05f, 0.03f, 0, 0}},
-        {PuType.PlasmaEmptyTriangleType, new[] {0, 0, 0, 0, 0.13f, 0.11f, 0.08f, 0.05f, 0.03f, 0}},
-        {PuType.BrickSquareType, new[] {0, 0, 0, 0, 0.13f, 0.10f, 0.07f, 0.07f, 0.06f, 0.04f}},
-        {PuType.StingType, new[] {0, 0, 0, 0, 0.11f, 0.10f, 0.08f, 0.06f, 0.06f, 0.06f}},
-        {PuType.TransformBrickType, new[] {0, 0, 0, 0, 0, 0.11f, 0.08f, 0.08f, 0.08f, 0.06f}},
-        {PuType.TransformDestroyType, new[] {0, 0, 0, 0, 0, 0.11f, 0.09f, 0.09f, 0.08f, 0.06f}},
-        {PuType.TransformJokerType, new[] {0, 0, 0, 0, 0, 0, 0.09f, 0.09f, 0.08f, 0.05f}},
-        {PuType.CopyLineType, new[] {0, 0, 0, 0, 0, 0, 0.09f, 0.08f, 0.07f, 0.06f}},
-        {PuType.CopySquareType, new[] {0, 0, 0, 0, 0, 0, 0.09f, 0.08f, 0.07f, 0.06f}},
-        {PuType.CopyPredictionType, new[] {0, 0, 0, 0, 0, 0, 0, 0.09f, 0.09f, 0.08f}},
-        {PuType.TransformBombType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0.1f, 0.1f}},
-        {PuType.BrickTowerType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0.09f}},
-        {PuType.PlasmaTriangleType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1f}},
-        // {PuType.TornadoType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1f}},
-        // {PuType.FaintType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1f}},
-        // {PuType.BlackoutType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1f}}
+        {PuType.RandomType, new[] {0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f}},
+        {PuType.JokerType, new[] {0.45f, 0.45f, 0.3f, 0.2f, 0.1f, 0.05f, 0, 0, 0, 0}},
+        {PuType.BombType, new[] {0.45f, 0.45f, 0.3f, 0.2f, 0.1f, 0.05f, 0.05f, 0.05f, 0, 0}},
+        {PuType.ZapHorizontalType, new[] {0, 0, 0.15f, 0.20f, 0.10f, 0.05f, 0.05f, 0.05f, 0.05f, 0.05f}},
+        {PuType.ZapDiagonalType, new[] {0, 0, 0.15f, 0.20f, 0.10f, 0.05f, 0.05f, 0.05f, 0.05f, 0.05f}},
+        {PuType.CutterType, new[] {0, 0, 0, 0.10f, 0.10f, 0.05f, 0.05f, 0.05f, 0.05f, 0.05f}},
+        {PuType.PlasmaNoTriangleType, new[] {0, 0, 0, 0, 0.1f, 0.05f, 0.05f, 0, 0, 0}},
+        {PuType.PlasmaEmptyTriangleType, new[] {0, 0, 0, 0, 0.1f, 0.05f, 0.05f, 0.05f, 0, 0}},
+        {PuType.PlasmaTriangleType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0.05f, 0.1f}},
+        {PuType.StingType, new[] {0, 0, 0, 0, 0.1f, 0.05f, 0.05f, 0.05f, 0.05f, 0.05f}},
+        {PuType.CopyLineType, new[] {0, 0, 0, 0, 0.05f, 0.05f, 0.05f, 0.05f, 0.05f, 0.05f}},
+        {PuType.CopySquareType, new[] {0, 0, 0, 0, 0.05f, 0.05f, 0.05f, 0.05f, 0.05f, 0.05f}},
+        {PuType.CopyPredictionType, new[] {0, 0, 0, 0, 0, 0, 0, 0.05f, 0.05f, 0.1f}},
+        {PuType.TransformBombType, new[] {0, 0, 0, 0, 0, 0, 0, 0.1f, 0.1f, 0.05f}},
+        {PuType.TransformJokerType, new[] {0, 0, 0, 0, 0, 0, 0.1f, 0.1f, 0.05f, 0}},
+        {PuType.TransformDestroyType, new[] {0, 0, 0, 0, 0, 0.1f, 0.1f, 0.05f, 0.05f, 0}},
+        {PuType.TransformBrickType, new[] {0, 0, 0, 0, 0, 0.1f, 0.1f, 0.05f, 0.05f, 0}},
+        {PuType.BrickSquareType, new[] {0, 0, 0, 0, 0, 0.1f, 0.1f, 0.05f, 0.05f, 0.05f}},
+        {PuType.BrickTowerType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1f}},
+        {PuType.TornadoType, new[] {0, 0, 0, 0, 0, 0, 0, 0.05f, 0.1f, 0.1f}},
+        {PuType.FaintType, new[] {0, 0, 0, 0, 0, 0.1f, 0.05f, 0.05f, 0.05f, 0}},
+        {PuType.BlackoutType, new[] {0, 0, 0, 0, 0, 0, 0, 0, 0.05f, 0.1f}}
     };
 
 
@@ -114,8 +114,7 @@ public class BallFactory
     public void RefreshPu(GameState gs)
     {
         int bearingIndex = getBearingIndex(gs);
-        int counterPu = 10;
-        /*
+        int counterPu;
         if (bearingIndex == BEARINGS_LEVEL.Length)
         {
             float multCompute = (gs.Multiplicator - GameState.MULTIPLICATOR_MIN) /
@@ -131,7 +130,7 @@ public class BallFactory
         {
             counterPu = COUNTER_PU[bearingIndex] + GameState.MULTIPLICATOR_MAX - gs.Multiplicator;
         }
-        */
+
         gs.NextPu = GeneratePu(gs);
         gs.CountPowerUp =
             GameState.BALL_BY_LEVEL - gs.NbBallDrop % GameState.BALL_BY_LEVEL == counterPu % GameState.BALL_BY_LEVEL
@@ -143,7 +142,7 @@ public class BallFactory
     {
         float randProbability = Random.Range(0, Int32.MaxValue) / (float)Int32.MaxValue;
         float countProbability = 0;
-        /*
+
         Array puENum = Enum.GetValues(typeof(PuType));
         PuType lastPuType = PUTypes[0];
         foreach (int i in puENum)
@@ -158,19 +157,15 @@ public class BallFactory
                 return generatePUByID(PUTypes[i]);
             }
         }
-        */
 
-        return new BlackoutBall();
-        // return generatePUByID(lastPuType);
+        return generatePUByID(lastPuType);
     }
     private SpecialBall generatePUByID(PuType puType)
     {
         switch (puType)
         {
-            /*
             case PuType.RandomType:
                 return new RandomBall();
-            */
             case PuType.BombType:
                 return new BombBall();
             case PuType.JokerType:
@@ -213,14 +208,12 @@ public class BallFactory
                 return new BrickBall();
             case PuType.BrickTowerType:
                 return new BrickTower();
-            /*
             case PuType.TornadoType:
                 return new TornadoBall();
             case PuType.FaintType:
                 return new FaintBall();
             case PuType.BlackoutType:
                 return new BlackoutBall();
-           */
             default:
                 return null;
         }

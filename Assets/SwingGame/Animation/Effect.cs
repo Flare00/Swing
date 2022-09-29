@@ -17,7 +17,8 @@ public class Effect
         ZapDiagonal,
         BallTransform,
         BallSmoke,
-        StarTransform
+        StarTransform,
+        TornadoEffect
     }
 
     public Effect(EffectType type, Vector3 v)
@@ -60,6 +61,12 @@ public class Effect
                 _ps.Add(_go.transform.Find("Particle1").GetComponent<ParticleSystem>());
                 _ps.Add(_go.transform.Find("Particle2").GetComponent<ParticleSystem>());
                 break;
+            case EffectType.TornadoEffect:
+                _go = GameObject.Instantiate(Resources.Load("Particles/PS_TornadoEffect", typeof(GameObject))) as GameObject;
+                _ps.Add(_go.transform.Find("Particle1").GetComponent<ParticleSystem>());
+                _ps.Add(_go.transform.Find("Particle2").GetComponent<ParticleSystem>());
+                break;
+
         }
         if (_go != null)
         {

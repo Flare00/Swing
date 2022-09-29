@@ -21,7 +21,7 @@ public class TornadoBall : SpecialBall
     public override void Action(GameZone zone, int x, int y)
     {
         // Add effect (ParticleSystem)
-        zone.AddEffect(new Effect(Effect.EffectType.ZapDiagonal, this.BallObject.transform.position - new Vector3(0,y,0))); 
+        zone.AddEffect(new Effect(Effect.EffectType.TornadoEffect, this.BallObject.transform.position - new Vector3(0,y,0))); 
         // Changer la position pour faire en sorte qu'elle soit a 0
 
         zone.SetDeactivateSwingAtCol(x, true);
