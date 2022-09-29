@@ -114,6 +114,8 @@ public class SwingAnimator : Animator
 
         for (int i = 0; i < sizeFloatingBall; i++)
         {
+            //Debug.Log("sizeFloatingBall : " + sizeFloatingBall + " | floatingBallsContainers.Count : " + _floatingBallsContainers.Count);
+
             FloatingBallContainer floatingBall = _floatingBallsContainers[i];
             if (!floatingBall.Paused)
             {
@@ -129,6 +131,7 @@ public class SwingAnimator : Animator
         int sizeToRemove = toRemove.Count;
         for (int i = 0; i < sizeToRemove; i++)
         {
+            //Debug.Log("SizeToRemove : " + sizeToRemove + " | toRemovCount : " + toRemove.Count);
             FloatingBallContainer floatingBall = toRemove[i];
             int posX = (int)Math.Round(floatingBall.Position.x);
             int posY = (int)Math.Round(floatingBall.Position.y);
@@ -150,7 +153,7 @@ public class SwingAnimator : Animator
             }
 
         }
-
+        //Debug.Log("GameOver ? " + gameOver);
         return gameOver;
     }
 
@@ -228,7 +231,8 @@ public class SwingAnimator : Animator
                 blackout.ActionOnExit(_gameZone);
             }
             //send the object to the other player.
-            if (MultiplayerSystem.getInstance() != null)
+            
+            if (_gameZone.GameState.Multiplayer && MultiplayerSystem.getInstance() != null)
             {
                 //move container to center zone
                 floatingBall.ContainerObject.transform.Translate(-_gameZone.ZoneGlobal.transform.position.x, 0, 0);

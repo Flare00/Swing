@@ -100,6 +100,10 @@ public class PauseMenuScript : MonoBehaviour, ISettingsCallBack
     }
     public void RestartAction()
     {
+        if (CrossSceneData.Multijoueur)
+        {
+            MultiplayerSystem.CreateInstance((MultiplayerSystem.getInstance() != null ? MultiplayerSystem.getInstance().IsCoop() : true) );
+        }
         transition.LoadSceneWithTransition("Game");
     }
 

@@ -185,7 +185,10 @@ public class GameOverScript : MonoBehaviour, IAskNameListener, ILeaderboardChang
     public void RestartAction()
     {
         CrossSceneData.LoadGame = false;
-        MultiplayerSystem.CreateInstance(_isCoop);
+        if (!this._solo)
+        {
+            MultiplayerSystem.CreateInstance(_isCoop);
+        }
         transitionScript.LoadSceneWithTransition("Game");
     }
 
